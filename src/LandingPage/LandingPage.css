@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box
+  }
+  
+  body {
+    font-family: "Open Sans",
+    sans-serif;
+    font-size: 18px;
+    color: #444;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .search-form {
+      display: block;
+  }
+
+  .search-form input {
+      height: 50px;
+      width: 85%;
+      border-bottom: 2px solid black;
+  }
+
+  hr {
+      width: 50%;
+  }
+
+  .links a {
+      padding: 10px;
+  }

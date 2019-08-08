@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Open Sans",
+    sans-serif;
+    font-size: 20px;
+    color: #444;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .plant-list {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 20px;
+  }
+  
+  .plant {
+    width: 32%;
+    height: 170px;
+    background: #aaa;
+    padding: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .plant a {
+    font-size: 10px;
+  }
