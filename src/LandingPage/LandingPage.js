@@ -11,6 +11,7 @@ export default class LandingPage extends Component {
                         <label for="search-bar">
                             Search for a plant:
                         </label>
+                        <br />
                         <input
                             type="text" name="search-bar" id="search-bar" placeholder="Search Term"
                         />
