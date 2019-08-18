@@ -7,8 +7,8 @@ export default class LoginPage extends Component {
         return (
             <div className="container">
                 <h2>Log In</h2>
-                <div class="form">
-                    <form class="login-form" autocomplete='off'>
+                <div className="form">
+                    <form className="login-form" autoComplete='off'>
                         <label htmlFor="email">Email Address:</label>
                         <input
                             type="text"

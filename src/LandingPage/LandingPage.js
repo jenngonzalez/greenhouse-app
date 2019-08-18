@@ -3,19 +3,32 @@ import { Link } from 'react-router-dom';
 import './LandingPage.css'
 
 export default class LandingPage extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            searchTerm: ''
+        }
+      }
+    
+
+    handleChange = event => {
+            this.setState({ searchTerm: event.target.value });
+    };
+
     render() {
         return (
             <div className="container">
                 <div className="search-bar">
                     <form className="search-form">
-                        <label for="search-bar">
+                        <label htmlFor="search-bar">
                             Search for a plant:
                         </label>
                         <br />
                         <input
-                            type="text" name="search-bar" id="search-bar" placeholder="Search Term"
+                            type="text" name="search-bar" id="search-bar" placeholder="Search Term" value={this.state.searchTerm} onChange={this.handleChange}
                         />
-                        <Link to="/results"><button>Go</button></Link>
+                        <Link to={{pathname: '/results', state: { searchTerm: this.state.searchTerm } }}><button>Go</button></Link>
                     </form>
                 </div>
                 <div className="app-description-one">

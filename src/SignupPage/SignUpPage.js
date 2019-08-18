@@ -8,8 +8,8 @@ export default class SignUpPage extends Component {
         return (
             <div className="container">
                 <h2>Sign Up</h2>
-                <div class="form">
-                    <form class="signup-form" autocomplete='off'>
+                <div className="form">
+                    <form className="signup-form" autoComplete='off'>
                         <label htmlFor="email">Email Address:</label>
                         <input
                             type="text"

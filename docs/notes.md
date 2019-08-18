@@ -1,0 +1,1 @@
+curl -i -X POST "https://trefle.io/api/auth/claim?token=R21MYUJFcGpZRlhZYmlsOFduQTFTUT09&origin=localhost:3000"
