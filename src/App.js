@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
-import LandingPage from './LandingPage/LandingPage';
-import SignUpPage from './SignupPage/SignUpPage';
-import LoginPage from './LoginPage/LoginPage';
-import SearchResults from './SearchResultsPage/SearchResults';
-import UserPlants from './UserPlants/UserPlants';
+import LandingPage from './routes/LandingPage/LandingPage';
+import SignUpPage from './routes/SignupPage/SignUpPage';
+import LoginPage from './routes/LoginPage/LoginPage';
+import SearchResults from './routes/SearchResultsPage/SearchResults';
+import UserPlants from './routes/UserPlants/UserPlants';
 
 export default class App extends Component {
   render() {

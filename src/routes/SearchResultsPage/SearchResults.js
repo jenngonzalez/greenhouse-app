@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { getTreflePlants, getPlants } from '../api';
-import STORE from '../plant-store';
-import config from '../config';
+import { getTreflePlants, getPlants } from '../../trefle-api';
+import STORE from '../../plant-store';
+import config from '../../config';
 import './SearchResults.css';
 
 export default class SearchResults extends Component {
