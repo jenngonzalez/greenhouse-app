@@ -1,29 +1,42 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import PrivateRoute from './components/Utils/PrivateRoute';
+import PublicOnlyRoute from './components/Utils/PublicOnlyRoute';
+import Header from './components/Header/Header';
 import LandingPage from './routes/LandingPage/LandingPage';
 import SignUpPage from './routes/SignupPage/SignUpPage';
 import LoginPage from './routes/LoginPage/LoginPage';
 import SearchResults from './routes/SearchResultsPage/SearchResults';
 import UserPlants from './routes/UserPlants/UserPlants';
+import NotFoundPage from './routes/NotFoundPage/NotFoundPage';
 
 export default class App extends Component {
+
+  state = { hasError: false }
+
+  static getDerivedStateFromError(error) {
+    console.error(error)
+    return { hasError: true }
+  }
+
   render() {
     return (
       <div className='App'>
         <header>
-          <h1><Link to="/">Digital Greenhouse</Link></h1>
+          <Header />
         </header>
-        <div className='app-body'>
-          <main className='main'>
+        <main className='main'>
+          {this.state.hasError && <p className='error'>There was an error! Oh no!</p>}
+          <Switch>
             <Route
               exact path='/'
               component={LandingPage}
             />
-            <Route
+            <PublicOnlyRoute
               path='/signup'
               component={SignUpPage}
             />
-            <Route
+            <PublicOnlyRoute
               path='/login'
               component={LoginPage}
             />
@@ -35,8 +48,11 @@ export default class App extends Component {
               path='/user/plants'
               component={UserPlants}
             />
-          </main>
-        </div>
+            <Route
+              component={NotFoundPage}
+            />
+          </Switch>
+        </main>
       </div>
     )
   }
