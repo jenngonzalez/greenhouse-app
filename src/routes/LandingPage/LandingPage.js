@@ -46,10 +46,10 @@ export default class LandingPage extends Component {
                     <h3>Receive push notifications with reminders to water or feed your plants.</h3>
                 </div>
                 <hr />
-                <div className="links">
+                {/* <div className="links">
                     <Link to="/signup">Sign Up</Link>
                     <Link to="/login">Log In</Link>
-                </div>
+                </div> */}
             </div>
         )
     }

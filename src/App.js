@@ -10,7 +10,7 @@ import SearchResults from './routes/SearchResultsPage/SearchResults';
 import UserPlants from './routes/UserPlants/UserPlants';
 import NotFoundPage from './routes/NotFoundPage/NotFoundPage';
 
-export default class App extends Component {
+class App extends Component {
 
   state = { hasError: false }
 
@@ -22,10 +22,10 @@ export default class App extends Component {
   render() {
     return (
       <div className='App'>
-        <header>
+        <header className='app-header'>
           <Header />
         </header>
-        <main className='main'>
+        <main className='app-main'>
           {this.state.hasError && <p className='error'>There was an error! Oh no!</p>}
           <Switch>
             <Route
@@ -57,3 +57,5 @@ export default class App extends Component {
     )
   }
 }
+
+export default App
