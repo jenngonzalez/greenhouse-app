@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { getTreflePlants, getPlants } from '../../trefle-api';
-import STORE from '../../plant-store';
-import config from '../../config';
+import TrefleApiService from '../../services/trefle-api-service';
 import './SearchResults.css';
 
 export default class SearchResults extends Component {
@@ -14,35 +11,22 @@ export default class SearchResults extends Component {
         }
     }
 
-    // componentDidMount() {
-    //     const apiUrl = config.API_URL
-    //     const authToken = config.AUTH_TOKEN
-    //     const searchTerm = this.props.location.state.searchTerm
-    //     console.log(apiUrl, authToken, searchTerm)
-    //     getTreflePlants(apiUrl, authToken, searchTerm)
-    //         .then(data => {
-    //             const newData = data.map(item => ({
-    //                 name: item.common_name,
-    //                 link: item.link
-    //             }))
-    //             this.setState = { newData }
-    //         }).catch(err => {
-    //             console.log(err)
-    //             throw err
-    //         })
-    // }
-
     componentDidMount() {
-        getPlants(STORE)
+        const searchTerm = this.props.location.state.searchTerm
+        console.log(searchTerm)
+
+        TrefleApiService.getTreflePlants(searchTerm)
             .then(data => {
-                return data.map(plant => ({
-                    name: plant.common_name,
-                    link: plant.link
+                console.log(data)
+                const newData = data.map(item => ({
+                    name: item.common_name,
+                    link: item.link
                 }))
-            })
-            .then(newData => {
                 console.log(newData)
                 this.setState({plants: newData})
+            }).catch(err => {
+                console.log(err)
+                throw err
             })
     }
 
@@ -63,22 +47,6 @@ export default class SearchResults extends Component {
                     </form>
                 </div>
                 <div className="search-results">
-                    {/* <section>
-                    <p>Photo and Details</p>
-                    <Link to='/user/plants'>Add To Your Garden</Link>
-                    </section>
-                    <section>
-                    <p>Photo and Details</p>
-                    <Link to='/user/plants'>Add To Your Garden</Link>
-                    </section>
-                    <section>
-                    <p>Photo and Details</p>
-                    <Link to='/user/plants'>Add To Your Garden</Link>
-                    </section>
-                    <section>
-                    <p>Photo and Details</p>
-                    <Link to='/user/plants'>Add To Your Garden</Link>
-                    </section> */}
                     <ul>
                         {plantDetails}
                     </ul>
