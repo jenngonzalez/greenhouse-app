@@ -8,6 +8,8 @@ export default class LoginForm extends Component {
     static defaultProps = {
         onLoginSuccess: () => {}
     }
+// can i use context here to update app state to logged in -- put it in onLoginSuccess function -- then the header can read the state and reset the state there, rerendering the header component
+
 
     state = { error: null }
 

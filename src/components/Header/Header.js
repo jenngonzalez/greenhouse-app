@@ -1,10 +1,35 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import TokenService from '../../services/token-service'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import TokenService from '../../services/token-service';
+// import AuthContext from '../../contexts/AuthContext';
 
 export default class Header extends Component {
+
+//   static contextType = AuthContext
+
+  static defaultProps = {
+    loggedIn: false
+  }
+
+  state = {
+      error: null,
+      loggedIn: null
+    }
+
   handleLogoutClick = () => {
     TokenService.clearAuthToken()
+    this.setState({
+        loggedIn: false
+    })
+
+  }
+
+  handleLoggedIn = () => {
+      if(this.props.loggedIn===true) {
+      this.setState({
+        loggedIn: true
+      })
+    }
   }
 
   renderLogoutLink() {
@@ -14,6 +39,9 @@ export default class Header extends Component {
           onClick={this.handleLogoutClick}
           to='/'>
           Logout
+        </Link>
+        <Link to='/user/plants'>
+          See Your Saved Plants
         </Link>
       </div>
     )

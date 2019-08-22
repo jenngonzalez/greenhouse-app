@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import { Redirect } from 'react-router';
 import './LoginPage.css';
+import AuthContext from '../../contexts/AuthContext';
 
 
 export default class LoginPage extends Component {
@@ -12,10 +13,14 @@ export default class LoginPage extends Component {
         }
     }
 
+    static contextType = AuthContext
+
     handleLoginSuccess = () => {
         const { location, history } = this.props
         const destination = (location.state || {}).from || '/'
         // // history.push(destination)
+        this.context.loggedIn()
+        console.log('logged in')
         history.push('/user/plants')
     }
 
