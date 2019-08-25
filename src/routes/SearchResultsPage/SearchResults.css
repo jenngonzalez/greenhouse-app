@@ -23,13 +23,16 @@
   }
 
   .search-results section {
-    height: 200px;
+    /* height: 200px; */
     /* padding: 30px 15px; */
     background-color: #bbb;
     width: 32%;
-    margin-left: auto;
+    /* margin-left: auto;
     margin-right: auto;
+    margin-bottom: 5px; */
+    margin: auto;
     margin-bottom: 5px;
+    padding: 10px;
   }
   
   .search-results section:nth-child(even) {

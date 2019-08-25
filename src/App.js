@@ -8,6 +8,7 @@ import SignUpPage from './routes/SignupPage/SignUpPage';
 import LoginPage from './routes/LoginPage/LoginPage';
 import SearchResults from './routes/SearchResultsPage/SearchResults';
 import UserPlants from './routes/UserPlants/UserPlants';
+import AddPlantForm from './components/AddPlantForm/AddPlantForm';
 import NotFoundPage from './routes/NotFoundPage/NotFoundPage';
 import AuthContext from './contexts/AuthContext';
 // import TokenService from './services/token-service';
@@ -74,6 +75,10 @@ class App extends Component {
               <Route
                 path='/user/plants'
                 component={UserPlants}
+              />
+              <Route
+                path='/addplant'
+                component={AddPlantForm}
               />
               <Route
                 component={NotFoundPage}

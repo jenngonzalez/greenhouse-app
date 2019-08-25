@@ -40,6 +40,7 @@ export default class Header extends Component {
           to='/'>
           Logout
         </Link>
+        {' '}
         <Link to='/user/plants'>
           See Your Saved Plants
         </Link>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import TrefleApiService from '../../services/trefle-api-service';
 import placeholder from './placeholder.png';
 import './SearchResults.css';
@@ -14,7 +15,6 @@ export default class SearchResults extends Component {
 
     componentDidMount() {
         const searchTerm = this.props.location.state.searchTerm
-        // console.log(searchTerm)
 
         TrefleApiService.getTreflePlants(searchTerm)
             .then(data => {
@@ -45,12 +45,10 @@ export default class SearchResults extends Component {
     submitNewSearch = e => {
         e.preventDefault()
         const { searchTerm } = e.target
-        // console.log(searchTerm)
         const newSearchTerm = searchTerm.value
 
         TrefleApiService.getTreflePlants(newSearchTerm)
             .then(data => {
-                // console.log(data)
                 const newData = data.map(item => {
                     if (item.images.length > 0){
                         return {
@@ -66,7 +64,6 @@ export default class SearchResults extends Component {
                         }
                     }
                 })
-                // console.log(newData)
                 this.setState({plants: newData})
             }).catch(err => {
                 console.log(err)
@@ -76,9 +73,6 @@ export default class SearchResults extends Component {
     }
 
     render() {
-        // console.log(this.state)
-
-        // const plantList = this.state.plants.filter(plant => plant.name!==null)
 
         const plantDetails = this.state.plants.map((plant, index) => {
             if(plant.image === 'no photo available'){
@@ -87,6 +81,17 @@ export default class SearchResults extends Component {
                         <p>Plant Name: {plant.name}</p>
                         <p>Plant Family: {plant.family} </p>
                         <p><img src={placeholder} alt={plant.image} /></p>
+                        <Link
+                            to={{pathname: '/addplant',
+                                state: {
+                                    name: plant.name,
+                                    family: plant.family,
+                                    image: plant.image
+                                }
+                            }}
+                        >
+                            Add Plant to Your Greenhouse
+                        </Link>
                     </section>
                 )  
                 
@@ -96,6 +101,17 @@ export default class SearchResults extends Component {
                         <p>Plant Name: {plant.name}</p>
                         <p>Plant Family: {plant.family} </p>
                         <p><img src={plant.image} alt={plant.name} /></p>
+                        <Link
+                            to={{pathname: '/addplant',
+                                state: {
+                                    name: plant.name,
+                                    family: plant.family,
+                                    image: plant.image
+                                }
+                            }}
+                        >
+                            Add Plant to Your Greenhouse
+                        </Link>
                     </section>
                 )
             }
