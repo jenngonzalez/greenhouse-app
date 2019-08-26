@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './AddPlantForm.css';
-import config from '../../config'
+import AddPlantApiService from '../../services/addplant-api-service';
 
 
 export default class AddPlantForm extends Component {
@@ -12,11 +12,10 @@ export default class AddPlantForm extends Component {
         this.state = {
             name: this.props.location.state.name,
             family: this.props.location.state.family || '',
-            startDate: new Date(),
+            watered: new Date(),
             notes: '',
             image: this.props.location.state.image || ''
         };
-        // this.handleChange = this.handleChange.bind(this);
     }
 
 
@@ -35,7 +34,7 @@ export default class AddPlantForm extends Component {
 
     handleChangeWatered = (date) => {
         this.setState({
-            startDate: date
+            watered: date
         });
     }
 
@@ -51,33 +50,20 @@ export default class AddPlantForm extends Component {
         })
     }
 
-    // handleSubmit = (e) => {
-    //     e.preventDefault()
-    //     fetch(config.API_NOTES, {
-    //         method: 'POST',
-    //         body: JSON.stringify(newNote),
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         }
-    //     })
-    //         .then(response => {
-    //             if(!response.ok) {
-    //                 return response.json().then(error => {
-    //                     throw error
-    //                 })
-    //             }
-    //             return response.json()
-    //         })
-    //         .then(data => {
-    //             noteTitle.value=''
-    //             noteContent.value=''
-    //             this.context.addNote(data)
-    //             this.props.history.push('/')
-    //         })
-    //         .catch(error => {
-    //             this.setState({ error })
-    //         })
-    // }
+    handleSubmit = (e) => {
+        e.preventDefault()
+        const newPlant = {
+            name: this.state.name,
+            family: this.state.family,
+            watered: this.state.watered,
+            notes: this.state.notes,
+            image: this.state.image
+        }
+        console.log(newPlant)
+        AddPlantApiService.postPlant(newPlant)
+            .then(this.context.addPlant)
+            .catch(this.context.setError)
+    }
 
     render() {
         console.log(this.state.image)
@@ -108,7 +94,7 @@ export default class AddPlantForm extends Component {
                     />
                     <label htmlFor='watered'>Last Watered:</label>
                     <DatePicker
-                        selected={this.state.startDate}
+                        selected={this.state.watered}
                         onChange={this.handleChangeWatered}
                     />
                     <label htmlFor='plant-notes'>Notes:</label>

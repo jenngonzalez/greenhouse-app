@@ -1,33 +1,22 @@
 import config from '../config'
+import TokenService from '../services/token-service'
 
 const AddPlantApiService = {
-    postPlant(data) {
-        return fetch(`${config.SERVER_ENDPOINT}/auth/login`, {
+    postPlant(plant) {
+        // console.log(TokenService.getAuthToken())
+        return fetch(`${config.SERVER_ENDPOINT}/plants`, {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${TokenService.getAuthToken()}`
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(plant)
         })
             .then(res =>
                 (!res.ok)
                     ? res.json().then(e => Promise.reject(e))
                     : res.json()
             )
-    },
-    postUser(credentials) {
-        return fetch(`${config.SERVER_ENDPOINT}/users`, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(credentials)
-        })
-            .then(res => {
-                (!res.ok)
-                    ? res.json().then(e => Promise.reject(e))
-                    : res.json()
-            })
     }
 }
 

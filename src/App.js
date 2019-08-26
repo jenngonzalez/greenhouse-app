@@ -31,8 +31,6 @@ class App extends Component {
     this.setState({
       loggedIn: true
     })
-    console.log('logged in set to true in app')
-    console.log(this.state.loggedIn)
   }
 
   loggedOut = () => {
