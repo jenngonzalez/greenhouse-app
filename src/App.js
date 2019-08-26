@@ -71,9 +71,10 @@ class App extends Component {
                 component={SearchResults}
               />
               <Route
-                path='/user/plants'
+                path='/user/:username'
                 component={UserPlants}
               />
+              {/* is there any way for the path to be just '/username' without disrupting the other endpoints? */}
               <Route
                 path='/addplant'
                 component={AddPlantForm}

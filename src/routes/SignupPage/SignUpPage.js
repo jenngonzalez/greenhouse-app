@@ -25,3 +25,5 @@ export default class SignUpPage extends Component {
         )
     }
 }
+
+// should sign up automatically log the user in?

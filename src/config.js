@@ -3,5 +3,6 @@ export default {
     API_URL: 'https://trefle.io/api/plants',
     SERVER_ENDPOINT: 'http://localhost:8000/api',
     TREFLE_ENDPOINT: 'https://trefle.io/api/plants',
-    TOKEN_KEY: 'greenhouse-client-auth-token'
+    TOKEN_KEY: 'greenhouse-client-auth-token',
+    USERNAME: 'username'
 }

@@ -18,6 +18,7 @@ export default class Header extends Component {
 
   handleLogoutClick = () => {
     TokenService.clearAuthToken()
+    TokenService.clearUserName()
     this.setState({
         loggedIn: false
     })
@@ -33,6 +34,7 @@ export default class Header extends Component {
   }
 
   renderLogoutLink() {
+    const username = TokenService.getUserName()
     return (
       <div className='header-logged-in'>
         <Link
@@ -41,8 +43,8 @@ export default class Header extends Component {
           Logout
         </Link>
         {' '}
-        <Link to='/user/plants'>
-          See Your Saved Plants
+        <Link to={`/user/${username}`}>
+            See Your Saved Plants
         </Link>
       </div>
     )

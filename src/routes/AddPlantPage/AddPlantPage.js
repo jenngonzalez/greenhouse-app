@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import LoginForm from '../../components/LoginForm/LoginForm';
+import AddPlantForm from '../../components/AddPlantForm/AddPlantForm';
 import TokenService from '../../services/token-service';
 // import { Redirect } from 'react-router';
 import './LoginPage.css';
 import AuthContext from '../../contexts/AuthContext';
 
 
-export default class LoginPage extends Component {
+export default class AddPlantPage extends Component {
     static defaultProps = {
         location: {},
         history: {
@@ -27,7 +28,7 @@ export default class LoginPage extends Component {
         return (
             <div className="LoginPage">
                 <h2>Log In</h2>
-                <LoginForm onLoginSuccess={this.handleLoginSuccess} />
+                <AddPlantForm onSubmitSuccess={this.handleSubmitSuccess} />
             </div>
         )
     }
