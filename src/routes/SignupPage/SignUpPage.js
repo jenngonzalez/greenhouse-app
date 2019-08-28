@@ -11,10 +11,11 @@ export default class SignUpPage extends Component {
         }
     }
 
-    handleSignUpSuccess = user => {
+    handleSignUpSuccess = () => {
         const { history } = this.props
         history.push('/login')
     }
+
 
     render() {
         return (

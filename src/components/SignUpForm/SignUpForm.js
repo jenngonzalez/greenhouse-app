@@ -19,6 +19,12 @@ export default class SignUpForm extends Component {
             user_name: username.value,
             password: password.value,
         })
+        // if(res.ok) {
+        //     this.props.onSignUpSuccess()
+        // }
+        // else {
+        //     // redirect back to sign-up page, or stay on page?
+        // }
             .then(user => {
                 email.value = ''
                 username.value = ''

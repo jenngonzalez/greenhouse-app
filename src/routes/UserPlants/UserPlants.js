@@ -18,6 +18,9 @@ export default class UserPlants extends Component {
 // delete is protected and will redirect to userplants page (now minus the deleted plant)
 // patchplantform will be identical to addplant form, send a PATCH req instead of a POST
 
+
+// i think we need a componentWillUpdate() here to rerender the page after a new plant is added
+
     componentDidMount() {
         const { username } = this.props.match.params
         GetPlantsApiService.getPlants(username)

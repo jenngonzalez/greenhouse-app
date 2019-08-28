@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './AddPlantForm.css';
 import AddPlantApiService from '../../services/addplant-api-service';
+import TokenService from '../../services/token-service';
 
 
 export default class AddPlantForm extends Component {
@@ -16,6 +17,21 @@ export default class AddPlantForm extends Component {
             notes: '',
             image: this.props.location.state.image || ''
         };
+    }
+
+    static defaultProps = {
+        location: {},
+        history: {
+            push: () => {}
+        }
+    }
+
+    // static contextType = AuthContext
+
+    handleAddSuccess = () => {
+        const { history } = this.props
+        const username = TokenService.getUserName()
+        history.push(`/user/${username}`)
     }
 
 
@@ -62,6 +78,7 @@ export default class AddPlantForm extends Component {
         console.log(newPlant)
         AddPlantApiService.postPlant(newPlant)
             .then(this.context.addPlant)
+            .then(this.handleAddSuccess())
             .catch(this.context.setError)
     }
 
@@ -96,6 +113,18 @@ export default class AddPlantForm extends Component {
                     <DatePicker
                         selected={this.state.watered}
                         onChange={this.handleChangeWatered}
+                        popperPlacement='bottom'
+                        popperModifiers={{
+                            flip: {
+                                behavior: ['bottom'] // don't allow it to flip to be above
+                            },
+                            preventOverflow: {
+                                enabled: false // tell it not to try to stay within the view (this prevents the popper from covering the element you clicked)
+                            },
+                            hide: {
+                                enabled: false // turn off since needs preventOverflow to be enabled
+                            }
+                        }}
                     />
                     <label htmlFor='plant-notes'>Notes:</label>
                     <textarea

@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
-import LoginForm from '../../components/LoginForm/LoginForm';
 import AddPlantForm from '../../components/AddPlantForm/AddPlantForm';
 import TokenService from '../../services/token-service';
 // import { Redirect } from 'react-router';
-import './LoginPage.css';
-import AuthContext from '../../contexts/AuthContext';
+// import AuthContext from '../../contexts/AuthContext';
 
 
 export default class AddPlantPage extends Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            name: this.props.location.state.name,
+            family: this.props.location.state.family || '',
+            image: this.props.location.state.image || ''
+        };
+    }
+
     static defaultProps = {
         location: {},
         history: {
@@ -15,20 +23,28 @@ export default class AddPlantPage extends Component {
         }
     }
 
-    static contextType = AuthContext
+    // static contextType = AuthContext
 
-    handleLoginSuccess = () => {
+    handleAddPlantSuccess = () => {
         const { history } = this.props
         const username = TokenService.getUserName()
-        this.context.loggedIn()
         history.push(`/user/${username}`)
     }
 
+
     render() {
+        const plantDetails = {
+            name: this.state.name,
+            family: this.state.family,
+            image: this.state.image
+        }
+        // console.log(this.props.location.state.name)
+        // console.log(this.props.location.state.family)
+        // console.log(this.props.location.state.image)
         return (
-            <div className="LoginPage">
-                <h2>Log In</h2>
-                <AddPlantForm onSubmitSuccess={this.handleSubmitSuccess} />
+            <div className="add-plant-page">
+                <h2>Add a Plant</h2>
+                <AddPlantForm onAddSuccess={this.handleAddPlantSuccess} plantDetails={plantDetails}/>
             </div>
         )
     }
