@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import GetPlantsApiService from '../../services/getplants-api-service';
+import GreenhouseContext from '../../contexts/GreenhouseContext';
 import './UserPlants.css';
 
 export default class UserPlants extends Component {
+
+    static contextType = GreenhouseContext
 
     constructor(props) {
         super(props)
@@ -34,7 +37,7 @@ export default class UserPlants extends Component {
                         image: plant.image || ''
                     }
                 })
-                this.setState({plants: userPlants})
+                this.context.addPlants(userPlants)
             }).catch(err => {
                 console.log(err)
                 throw err
@@ -42,7 +45,7 @@ export default class UserPlants extends Component {
     }
 
     renderPlants = () => {
-        return this.state.plants.map((plant,index) =>
+        return this.context.plants.map((plant,index) =>
             <section className='userPlant' key={index}>
                 <p className='name'>Plant name: {plant.name}</p>
                 <p className='family'>Plant family: {plant.family}</p>

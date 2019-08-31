@@ -9,13 +9,15 @@ export default class SearchResults extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            plants: []
+            plants: [],
+            loading: false,
+            error: false
         }
     }
 
     componentDidMount() {
         const searchTerm = this.props.location.state.searchTerm
-
+        this.setState({loading: true})
         TrefleApiService.getTreflePlants(searchTerm)
             .then(data => {
                 console.log(data)
@@ -35,9 +37,11 @@ export default class SearchResults extends Component {
                     }
                 })
                 // console.log(newData)
-                this.setState({plants: newData})
+                this.setState({plants: newData, loading: false})
+    
             }).catch(err => {
                 console.log(err)
+                this.setState({error: true, loading: false})
                 throw err
             })
     }
@@ -130,6 +134,7 @@ export default class SearchResults extends Component {
                 </div>
                 Number of Results: {this.state.plants.length}
                 <div className="search-results">
+                    {this.state.loading && <p className='loading'>Loading ...</p>}
                     {plantDetails}
                 </div>
             </div>

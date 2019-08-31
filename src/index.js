@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
+import { GreenhouseProvider } from './contexts/GreenhouseContext';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
 
 ReactDOM.render(
     <BrowserRouter>
-        <App />
+        <GreenhouseProvider>
+            <App />
+        </GreenhouseProvider>
     </BrowserRouter>, document.getElementById('root'));
 
 

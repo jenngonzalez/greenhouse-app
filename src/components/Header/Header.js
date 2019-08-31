@@ -42,9 +42,21 @@ export default class Header extends Component {
           to='/'>
           Logout
         </Link>
-        {' '}
+        {'    '}
         <Link to={`/user/${username}`}>
             See Your Saved Plants
+        </Link>
+        {'    '}
+        <Link
+            to={{
+                pathname: '/addplant',
+                state: {
+                    name: '',
+                    family: '',
+                    image: ''
+                }
+        }}>
+            Add A New Plant
         </Link>
       </div>
     )

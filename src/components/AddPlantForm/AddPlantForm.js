@@ -4,18 +4,21 @@ import "react-datepicker/dist/react-datepicker.css";
 import './AddPlantForm.css';
 import AddPlantApiService from '../../services/addplant-api-service';
 import TokenService from '../../services/token-service';
+import GreenhouseContext from '../../contexts/GreenhouseContext';
 
 
 export default class AddPlantForm extends Component {
+
+    static contextType = GreenhouseContext
 
     constructor(props) {
         super(props)
         this.state = {
             name: this.props.location.state.name,
-            family: this.props.location.state.family || '',
+            family: this.props.location.state.family,
             watered: new Date(),
             notes: '',
-            image: this.props.location.state.image || ''
+            image: this.props.location.state.image
         };
     }
 
@@ -26,7 +29,6 @@ export default class AddPlantForm extends Component {
         }
     }
 
-    // static contextType = AuthContext
 
     handleAddSuccess = () => {
         const { history } = this.props
@@ -79,7 +81,7 @@ export default class AddPlantForm extends Component {
         AddPlantApiService.postPlant(newPlant)
             .then(this.context.addPlant)
             .then(this.handleAddSuccess())
-            .catch(this.context.setError)
+            // .catch(this.context.setError)
     }
 
     render() {
