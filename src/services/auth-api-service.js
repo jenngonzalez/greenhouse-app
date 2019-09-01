@@ -1,4 +1,18 @@
-import config from '../config'
+import config from '../config';
+// import AuthContext from '../contexts/AuthContext';
+
+
+
+function handleErrors(response) {
+    // if (!response.ok) {
+    //     // response.json().then(e => Promise.reject(e))
+    //     throw response
+    // }
+    if (response.status !== 201) {
+        throw response
+    }
+    return response;
+}
 
 const AuthApiService = {
     postLogin(credentials) {
@@ -23,10 +37,18 @@ const AuthApiService = {
             },
             body: JSON.stringify(credentials)
         })
-            .then(res => {
-                (!res.ok)
-                    ? res.json().then(e => Promise.reject(e))
-                    : res.json()
+            // .then(res => {
+            //     (!res.ok)
+            //         ? res.json().then(e => Promise.reject(e))
+            //         : res.json()
+            // })
+            .then(handleErrors)
+            .then(response => console.log(response))
+            .catch( error => {
+                error.json().then(errorMessage => {
+                    console.log(errorMessage)
+                })
+                Promise.reject(error.statusText)
             })
     }
 }

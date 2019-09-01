@@ -19,25 +19,30 @@ export default class SignUpForm extends Component {
             user_name: username.value,
             password: password.value,
         })
-        // if(res.ok) {
-        //     this.props.onSignUpSuccess()
-        // }
-        // else {
-        //     // redirect back to sign-up page, or stay on page?
-        // }
             .then(user => {
                 email.value = ''
                 username.value = ''
                 password.value = ''
                 this.props.onSignUpSuccess()
             })
+            // .then(res => {
+            //     console.log(res.status)
+            //     if(res.status === 201) {
+            //         email.value = ''
+            //         username.value = ''
+            //         password.value = ''
+            //         this.props.onSignUpSuccess()
+            //     }
+            // })
             .catch(res => {
                 this.setState({ error: res.error })
+                console.log(this.state.error)
             })
     }
 
     render() {
         const { error } = this.state
+        console.log(this.state.error)
         return (
             <form
                 className='signup-form'
