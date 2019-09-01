@@ -5,6 +5,8 @@ import TokenService from '../../services/token-service';
 // import AuthContext from '../../contexts/AuthContext';
 
 
+// TODO: insert placeholder image if search result item doesn't have an associated image
+
 export default class AddPlantPage extends Component {
 
     constructor(props) {
@@ -38,9 +40,6 @@ export default class AddPlantPage extends Component {
             family: this.state.family,
             image: this.state.image
         }
-        // console.log(this.props.location.state.name)
-        // console.log(this.props.location.state.family)
-        // console.log(this.props.location.state.image)
         return (
             <div className="add-plant-page">
                 <h2>Add a Plant</h2>

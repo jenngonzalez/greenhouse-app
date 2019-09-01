@@ -20,6 +20,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     font-size: 12px;
+    margin-top: 10px;
   }
 
   .search-results section {
@@ -46,4 +47,10 @@
 
   section img {
     height: 100px;
+  }
+
+  .loading {
+    margin: auto;
+    font-size: 20px;
+    color: red;
   }

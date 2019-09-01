@@ -1,0 +1,7 @@
+.header-logged-in {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 600px;
+    margin: auto;
+}

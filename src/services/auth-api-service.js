@@ -2,6 +2,9 @@ import config from '../config';
 // import AuthContext from '../contexts/AuthContext';
 
 
+// TODO: WIP error handling -
+    // how to get error message to the client?
+    // how to NOT redirect to login page on anything other than status 201?
 
 function handleErrors(response) {
     // if (!response.ok) {

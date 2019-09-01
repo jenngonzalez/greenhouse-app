@@ -13,16 +13,13 @@ export default class UserPlants extends Component {
             plants: []
         }
     }
+// TODO: ideal path would be just /:username (rather than /user/:username, difficulty in having a single variable dynamic path since anything will match it)
 
-// componentDidMount should perform a GET request for all plants that match a the user (user id or username)
-// ideally, path would be /:username
 // not a protected path, as people may want to share their plant page with others
 // editing is protected, will redirect to patchplantform if logged in as that user
 // delete is protected and will redirect to userplants page (now minus the deleted plant)
 // patchplantform will be identical to addplant form, send a PATCH req instead of a POST
 
-
-// i think we need a componentWillUpdate() here to rerender the page after a new plant is added
 
     componentDidMount() {
         const { username } = this.props.match.params
@@ -57,8 +54,6 @@ export default class UserPlants extends Component {
     }
 
     render() {
-
-        // map over plants in state, returning sections with: plant details, edit link, delete link
         return (
             <div className="container">
                 <h2>Username's Garden</h2>

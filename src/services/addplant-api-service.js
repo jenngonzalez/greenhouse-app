@@ -3,7 +3,6 @@ import TokenService from '../services/token-service'
 
 const AddPlantApiService = {
     postPlant(plant) {
-        // console.log(TokenService.getAuthToken())
         return fetch(`${config.SERVER_ENDPOINT}/plants`, {
             method: 'POST',
             headers: {

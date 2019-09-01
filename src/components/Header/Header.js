@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import TokenService from '../../services/token-service';
+import './Header.css';
 // import AuthContext from '../../contexts/AuthContext';
 
 export default class Header extends Component {
@@ -37,16 +38,9 @@ export default class Header extends Component {
     const username = TokenService.getUserName()
     return (
       <div className='header-logged-in'>
-        <Link
-          onClick={this.handleLogoutClick}
-          to='/'>
-          Logout
-        </Link>
-        {'    '}
         <Link to={`/user/${username}`}>
             See Your Saved Plants
         </Link>
-        {'    '}
         <Link
             to={{
                 pathname: '/addplant',
@@ -57,6 +51,11 @@ export default class Header extends Component {
                 }
         }}>
             Add A New Plant
+        </Link>
+        <Link
+          onClick={this.handleLogoutClick}
+          to='/'>
+          Logout
         </Link>
       </div>
     )

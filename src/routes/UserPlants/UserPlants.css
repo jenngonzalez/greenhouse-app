@@ -19,14 +19,16 @@
     margin: 20px;
   }
   
-  .plant {
-    width: 32%;
-    height: 170px;
+  .userPlant {
+    width: 24%;
+    height: auto;
     background: #aaa;
     padding: 20px;
+    margin: 2px;
     margin-bottom: 15px;
   }
   
-  .plant a {
-    font-size: 10px;
+
+  .userPlant {
+    font-size: 15px;
   }

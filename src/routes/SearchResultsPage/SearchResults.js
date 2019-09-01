@@ -15,6 +15,7 @@ export default class SearchResults extends Component {
         }
     }
 
+
     componentDidMount() {
         const searchTerm = this.props.location.state.searchTerm
         this.setState({loading: true})
@@ -50,6 +51,7 @@ export default class SearchResults extends Component {
         e.preventDefault()
         const { searchTerm } = e.target
         const newSearchTerm = searchTerm.value
+        this.setState({loading: true})
 
         TrefleApiService.getTreflePlants(newSearchTerm)
             .then(data => {
@@ -68,7 +70,7 @@ export default class SearchResults extends Component {
                         }
                     }
                 })
-                this.setState({plants: newData})
+                this.setState({plants: newData, loading: false})
             }).catch(err => {
                 console.log(err)
                 throw err
@@ -133,8 +135,8 @@ export default class SearchResults extends Component {
                     </form>
                 </div>
                 Number of Results: {this.state.plants.length}
+                {this.state.loading && <p className='loading'>Loading ...</p>}
                 <div className="search-results">
-                    {this.state.loading && <p className='loading'>Loading ...</p>}
                     {plantDetails}
                 </div>
             </div>
