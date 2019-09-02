@@ -56,9 +56,10 @@ export default class UserPlants extends Component {
     }
 
     render() {
+        const { username } = this.props.match.params
         return (
             <div className="container">
-                <h2>Username's Garden</h2>
+                <h2>{username}'s Garden</h2>
                 <div className="plant-list">
                     {this.renderPlants()}
                 </div>
