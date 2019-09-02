@@ -77,7 +77,6 @@ export default class AddPlantForm extends Component {
             notes: this.state.notes,
             image: this.state.image
         }
-        console.log(newPlant)
         AddPlantApiService.postPlant(newPlant)
             .then(this.context.addPlant)
             .then(this.handleAddSuccess())
@@ -85,7 +84,6 @@ export default class AddPlantForm extends Component {
     }
 
     render() {
-        console.log(this.state.image)
         return (
             <div className='add-plant-form'>
                 <h2>Add a Plant</h2>

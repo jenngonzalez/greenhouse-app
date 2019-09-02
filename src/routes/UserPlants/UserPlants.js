@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Moment from 'react-moment';
+import 'moment-timezone';
 import GetPlantsApiService from '../../services/getplants-api-service';
 import GreenhouseContext from '../../contexts/GreenhouseContext';
 import './UserPlants.css';
@@ -46,7 +48,7 @@ export default class UserPlants extends Component {
             <section className='userPlant' key={index}>
                 <p className='name'>Plant name: {plant.name}</p>
                 <p className='family'>Plant family: {plant.family}</p>
-                <p className='watered'>Last watered: {plant.watered}</p>
+                <p className='watered'>Last watered: <Moment format="MM/DD/YY">{plant.watered}</Moment></p>
                 <p className='notes'>Notes: {plant.notes}</p>
                 <img className='image' src={plant.image} alt='' />
             </section>

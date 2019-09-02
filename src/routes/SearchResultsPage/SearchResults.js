@@ -21,7 +21,6 @@ export default class SearchResults extends Component {
         this.setState({loading: true})
         TrefleApiService.getTreflePlants(searchTerm)
             .then(data => {
-                console.log(data)
                 const newData = data.map(item => {
                     if (item.images.length > 0){
                         return {
