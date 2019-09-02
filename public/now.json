@@ -11,5 +11,10 @@
           "src": ".*",
           "dest": "/index.html"
         }
-    ]
+    ],
+    "build": {
+        "env": {
+            "SERVER_ENDPOINT": "https://greenhouse-server23823.herokuapp.com/"
+        }
+    }
   }

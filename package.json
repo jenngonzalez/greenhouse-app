@@ -1,5 +1,6 @@
 {
   "name": "greenhouse-app",
+  "alias": "digital-greenhouse",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
