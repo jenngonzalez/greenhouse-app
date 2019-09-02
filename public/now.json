@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "alias": "jenns-greenhouse-app",
+    "alias": "digital-greenhouse",
     "name": "greenhouse-app",
     "routes": [
         {
