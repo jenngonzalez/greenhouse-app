@@ -1,7 +1,57 @@
+.Header {
+    width: 100%;
+    line-height: 40%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 20px;
+}
+
+.Header a {
+    text-decoration: none;
+}
+
+.Header h1 a {
+    color: rgb(23, 104, 82);
+    text-shadow: 2px 1px rgb(47, 233, 180);
+    font-family: 'Bad Script', cursive;
+    font-size: 40px;
+}
+
 .header-logged-in {
+    font-size: 12px;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    width: 600px;
-    margin: auto;
+    justify-content: center;
+    width: 100%;
+    margin-left: 30px;
+    margin-right: auto;
+}
+
+.header-logged-in a {
+    margin-right: 10px;
+    color: #353EE5;
+    font-family: 'Darker Grotesque', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.header-logged-in a:hover{
+    cursor: pointer;
+    color: #FF7D12;
+}
+
+.header-logged-out {
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header-logged-out a {
+    margin-right: 10px;
+    color: #353EE5;
+    font-family: 'Darker Grotesque', sans-serif;
 }

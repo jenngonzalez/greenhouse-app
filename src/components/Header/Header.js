@@ -39,7 +39,7 @@ export default class Header extends Component {
     return (
       <div className='header-logged-in'>
         <Link to={`/user/${username}`}>
-            See Your Saved Plants
+            Your Greenhouse
         </Link>
         <Link
             to={{
@@ -50,7 +50,7 @@ export default class Header extends Component {
                     image: ''
                 }
         }}>
-            Add A New Plant
+            Add A Plant
         </Link>
         <Link
           onClick={this.handleLogoutClick}
@@ -68,7 +68,6 @@ export default class Header extends Component {
           to='/signup'>
           Sign Up
         </Link>
-        {' '}
         <Link
           to='/login'>
           Log in

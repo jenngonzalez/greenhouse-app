@@ -11,24 +11,77 @@
     line-height: 1.5;
   }
 
+
+  .plant-container h2 {
+    font-size: 18px;
+    font-family: 'Manjari', sans-serif;
+  }
+
   .plant-list {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: 20px;
+    /* margin: 10px; */
   }
   
   .userPlant {
-    width: 24%;
+    width: 48%;
     height: auto;
-    background: #aaa;
-    padding: 20px;
+    background: rgba(47, 233, 180, 0.5);
     margin: 2px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
+    position: relative;
   }
-  
 
-  .userPlant {
-    font-size: 15px;
+  .plant-heading {
+    font-weight: bold;
+  }
+
+  .userPlant p {
+    font-size: 12px;
+    text-align: center;
+    margin-right: 5%;
+    /* word-wrap: break-word;
+    overflow: initial; */
+  }
+
+  .span-name p {
+    text-align: right;
+    font-size: 18px;
+    color: white;
+    font-family: 'Handlee', cursive;
+  }
+
+  .name {
+    position: absolute;
+    width: 100%;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+  }
+
+  .family {
+    line-height: 50%;
+    font-family: 'Manjari', sans-serif;
+  }
+
+  .watered {
+    line-height: 50%;
+    font-family: 'Manjari', sans-serif;
+  }
+
+  .notes {
+    line-height: 50%;
+    font-family: 'Manjari', sans-serif;
+  }
+
+  .image {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .hidden {
+    visibility: hidden;
   }

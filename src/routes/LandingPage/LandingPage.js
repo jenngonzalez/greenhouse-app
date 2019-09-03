@@ -18,7 +18,7 @@ export default class LandingPage extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="landing-page-container">
                 <div className="search-bar">
                     <form className="search-form">
                         <label htmlFor="search-bar">
@@ -31,21 +31,23 @@ export default class LandingPage extends Component {
                         <Link to={{pathname: '/results', state: { searchTerm: this.state.searchTerm } }}><button>Go</button></Link>
                     </form>
                 </div>
-                <div className="app-description-one">
-                    <h2>Find Your Plants</h2>
-                    <h3>Search from a database of over 300,000 plants, seeing details such as water, nutrient, and sunlight requirements.</h3>
+                <div className='descriptions'>
+                    <div className="app-description app-description-one">
+                        <h2>Find Your Plants</h2>
+                        <h3>Search from a database of over 300,000 plants, seeing details such as water, nutrient, and sunlight requirements.</h3>
+                    </div>
+                    <hr />
+                    <div className="app-description app-description-two">
+                        <h2>Keep Track of Your Garden</h2>
+                        <h3>See a list of your saved plants, with the option to upload your own photos. Save details for each plant, such as the last time it was watered or fed, and add your own personal comments.</h3>
+                    </div>
+                    <hr />
+                    <div className="app-description app-description-three">
+                        <h2>Never Kill Another Plant</h2>
+                        <h3>Receive push notifications with reminders to water or feed your plants.</h3>
+                    </div>
+                    <hr />
                 </div>
-                <hr />
-                <div className="app-description-two">
-                    <h2>Keep Track of Your Garden</h2>
-                    <h3>See a list of your saved plants, with the option to upload your own photos. Save details for each plant, such as the last time it was watered or fed, and add your own personal comments.</h3>
-                </div>
-                <hr />
-                <div className="app-description-three">
-                    <h2>Never Kill Another Plant</h2>
-                    <h3>Receive push notifications with reminders to water or feed your plants.</h3>
-                </div>
-                <hr />
             </div>
         )
     }

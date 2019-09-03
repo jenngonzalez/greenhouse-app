@@ -46,10 +46,10 @@ export default class UserPlants extends Component {
     renderPlants = () => {
         return this.context.plants.map((plant,index) =>
             <section className='userPlant' key={index}>
-                <p className='name'>Plant name: {plant.name}</p>
-                <p className='family'>Plant family: {plant.family}</p>
-                <p className='watered'>Last watered: <Moment format="MM/DD/YY">{plant.watered}</Moment></p>
-                <p className='notes'>Notes: {plant.notes}</p>
+                <span className='span-name'><p className='name'>{plant.name}</p></span>
+                <p className='family'><span className='plant-heading'>Plant Family: </span> {plant.family}</p>
+                <p className='watered'><span className='plant-heading'>Last Watered: </span> <Moment format="MM/DD/YY">{plant.watered}</Moment></p>
+                <p className='notes'><span className='plant-heading'>Notes: </span> {plant.notes}</p>
                 <img className='image' src={plant.image} alt='' />
             </section>
         )
@@ -58,7 +58,7 @@ export default class UserPlants extends Component {
     render() {
         const { username } = this.props.match.params
         return (
-            <div className="container">
+            <div className="plant-container">
                 <h2>{username}'s Garden</h2>
                 <div className="plant-list">
                     {this.renderPlants()}
