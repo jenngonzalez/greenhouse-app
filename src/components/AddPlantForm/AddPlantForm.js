@@ -87,6 +87,10 @@ export default class AddPlantForm extends Component {
             // .catch(this.context.setError)
     }
 
+    handleCancel = () => {
+        this.props.history.goBack()
+    }
+
     render() {
         return (
             <div className='add-plant-form'>
@@ -153,6 +157,7 @@ export default class AddPlantForm extends Component {
                         onChange={this.handleChangeImage}
                     />
                     <button type='submit' onClick={this.handleSubmit}>Submit</button>
+                    <button onClick={this.handleCancel}>Go Back</button>
                 </form>
             </div>
         )

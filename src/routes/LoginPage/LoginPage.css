@@ -29,3 +29,7 @@
       margin: auto;
       margin-top: 20px;
   }
+
+  input[type='button'] {
+      width: 112px;
+  }

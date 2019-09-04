@@ -23,11 +23,15 @@ export default class LoginPage extends Component {
         history.push(`/user/${username}`)
     }
 
+    handleCancel = () => {
+        this.props.history.push('/')
+    }
+
     render() {
         return (
             <div className="LoginPage">
                 <h2>Log In</h2>
-                <LoginForm onLoginSuccess={this.handleLoginSuccess} />
+                <LoginForm onLoginSuccess={this.handleLoginSuccess} onCancel={this.handleCancel} />
             </div>
         )
     }

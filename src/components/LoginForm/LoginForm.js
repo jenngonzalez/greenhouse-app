@@ -6,9 +6,9 @@ import AuthApiService from '../../services/auth-api-service';
 
 export default class LoginForm extends Component {
     static defaultProps = {
-        onLoginSuccess: () => {}
+        onLoginSuccess: () => {},
+        onCancel: () => {}
     }
-// can i use context here to update app state to logged in -- put it in onLoginSuccess function -- then the header can read the state and reset the state there, rerendering the header component
 
 
     state = { error: null }
@@ -63,6 +63,8 @@ export default class LoginForm extends Component {
                         />
                 </div>
                 <button type='submit'>Login</button>
+                <input type='button' name='cancel' value='cancel' onClick={this.props.onCancel} />
+                {/* <button onClick={this.props.onCancel}>Cancel</button> */}
             </form>
         )
     }

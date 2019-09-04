@@ -16,12 +16,15 @@ export default class SignUpPage extends Component {
         history.push('/login')
     }
 
+    handleCancel = () => {
+        this.props.history.push('/')
+    }
 
     render() {
         return (
             <div className='signup-page'>
                 <h2>Sign Up For An Account</h2>
-                <SignUpForm onSignUpSuccess={this.handleSignUpSuccess}/>
+                <SignUpForm onSignUpSuccess={this.handleSignUpSuccess} onCancel={this.handleCancel}/>
             </div>
         )
     }

@@ -4,7 +4,8 @@ import AuthApiService from '../../services/auth-api-service';
 
 export default class SignUpForm extends Component {
     static defaultProps = {
-        onSignUpSuccess: () => {}
+        onSignUpSuccess: () => {},
+        onCancel: () => {}
     }
 
     state = { error: null }
@@ -25,15 +26,6 @@ export default class SignUpForm extends Component {
                 password.value = ''
                 this.props.onSignUpSuccess()
             })
-            // .then(res => {
-            //     console.log(res.status)
-            //     if(res.status === 201) {
-            //         email.value = ''
-            //         username.value = ''
-            //         password.value = ''
-            //         this.props.onSignUpSuccess()
-            //     }
-            // })
             .catch(res => {
                 this.setState({ error: res.error })
                 console.log(this.state.error)
@@ -80,6 +72,7 @@ export default class SignUpForm extends Component {
                     />
                 </div>
                 <button type='submit'>Sign Up</button>
+                <button onClick={this.props.onCancel}>Cancel</button>
             </form>
         )
     }
