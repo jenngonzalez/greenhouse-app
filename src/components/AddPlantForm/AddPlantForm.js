@@ -70,6 +70,10 @@ export default class AddPlantForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+        if(this.state.name === '') {
+            alert('Plant name is required')
+            return false
+        }
         const newPlant = {
             name: this.state.name,
             family: this.state.family,
@@ -90,6 +94,9 @@ export default class AddPlantForm extends Component {
                 <form className='plant-form'>
                     <label htmlFor='plant-name'>Plant Name:</label>
                     <input
+                        required
+                        pattern='\S'
+                        title='This field is required'
                         type='text'
                         name='plant-name'
                         id='plant-name'
@@ -97,7 +104,6 @@ export default class AddPlantForm extends Component {
                         aria-required='true'
                         value={this.state.name}
                         onChange={this.handleChangeName}
-                        required
                     />
                     <label htmlFor='plant-family'>Plant Family:</label>
                     <input
