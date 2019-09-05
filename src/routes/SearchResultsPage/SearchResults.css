@@ -35,13 +35,9 @@
   }
 
   .search-results section {
-    /* height: 200px; */
-    /* padding: 30px 15px; */
     background-color: rgb(93, 214, 144);
     width: 32%;
-    /* margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 5px; */
+    height: 250px;
     margin: auto;
     margin-bottom: 5px;
     padding: 10px;

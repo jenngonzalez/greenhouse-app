@@ -32,11 +32,10 @@ export default class SearchResults extends Component {
                         return {
                             name: item.common_name,
                             family: item.family_common_name,
-                            image: 'no photo available'
+                            image: placeholder
                         }
                     }
                 })
-                // console.log(newData)
                 this.setState({plants: newData, loading: false})
     
             }).catch(err => {
@@ -52,7 +51,7 @@ export default class SearchResults extends Component {
         const newSearchTerm = searchTerm.value
         this.setState({loading: true})
 
-        TrefleApiService.getTreflePlants(newSearchTerm)
+        TrefleApiService.getTreflePlants(newSearchTerm, placeholder)
             .then(data => {
                 const newData = data.map(item => {
                     if (item.images.length > 0){
@@ -65,7 +64,7 @@ export default class SearchResults extends Component {
                         return {
                             name: item.common_name,
                             family: item.family_common_name,
-                            image: 'no photo available'
+                            image: placeholder
                         }
                     }
                 })
@@ -78,48 +77,25 @@ export default class SearchResults extends Component {
     }
 
     render() {
-
         const plantDetails = this.state.plants.map((plant, index) => {
-            if(plant.image === 'no photo available'){
-                return (
-                    <section key={index}>
-                        <p>Plant Name: {plant.name}</p>
-                        <p>Plant Family: {plant.family} </p>
-                        <p><img src={placeholder} alt={plant.image} /></p>
-                        <Link
-                            to={{pathname: '/addplant',
-                                state: {
-                                    name: plant.name,
-                                    family: plant.family,
-                                    image: plant.image
-                                }
-                            }}
-                        >
-                            Add Plant to Your Greenhouse
-                        </Link>
-                    </section>
-                )  
-                
-            } else {
-                return (
-                    <section key={index}>
-                        <p>Plant Name: {plant.name}</p>
-                        <p>Plant Family: {plant.family} </p>
-                        <p><img src={plant.image} alt={plant.name} /></p>
-                        <Link
-                            to={{pathname: '/addplant',
-                                state: {
-                                    name: plant.name,
-                                    family: plant.family,
-                                    image: plant.image
-                                }
-                            }}
-                        >
-                            Add Plant to Your Greenhouse
-                        </Link>
-                    </section>
-                )
-            }
+            return (
+                <section key={index}>
+                <p>Plant Name: {plant.name}</p>
+                <p>Plant Family: {plant.family} </p>
+                <p><img src={plant.image} alt={plant.name} /></p>
+                <Link
+                    to={{pathname: '/addplant',
+                        state: {
+                            name: plant.name,
+                            family: plant.family,
+                            image: plant.image
+                        }
+                    }}
+                >
+                    Add Plant to Your Greenhouse
+                </Link>
+            </section>
+            )
         })
 
 
@@ -133,8 +109,7 @@ export default class SearchResults extends Component {
                         <button type='submit'>Search</button>
                     </form>
                 </div>
-                Number of Results: {this.state.plants.length}
-                {this.state.loading && <p className='loading'>Loading ...</p>}
+                Number of Results: {this.state.loading ? <p className='loading'>Loading ...</p> : this.state.plants.length}
                 <div className="search-results">
                     {plantDetails}
                 </div>
