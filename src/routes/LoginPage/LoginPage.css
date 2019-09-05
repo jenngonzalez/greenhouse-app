@@ -33,3 +33,7 @@
   input[type='button'] {
       width: 112px;
   }
+
+  .loading {
+      color: red;
+  }

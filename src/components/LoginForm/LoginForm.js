@@ -9,13 +9,19 @@ export default class LoginForm extends Component {
         onLoginSuccess: () => {},
         onCancel: () => {}
     }
-
-
-    state = { error: null }
+    
+    constructor(props) {
+        super(props)
+        this.state = {
+            loading: false,
+            error: null
+        }
+    }
 
     handleSubmitAuth = e => {
         e.preventDefault()
-        this.setState({ error: null })
+        // this.setState({ error: null })
+        this.setState({ loading: true })
         const { email, password } = e.target
 
         AuthApiService.postLogin({
@@ -27,10 +33,11 @@ export default class LoginForm extends Component {
                 password.value=''
                 TokenService.saveAuthToken(res.authToken)
                 TokenService.saveUserName(res.user_name)
+                this.setState({ loading: false })
                 this.props.onLoginSuccess()
             })
             .catch(res => {
-                this.setState({ error: res.error })
+                this.setState({ loading: false, error: res.error })
             })
     }
 
@@ -41,6 +48,7 @@ export default class LoginForm extends Component {
                 className='login-form'
                 onSubmit={this.handleSubmitAuth}
             >
+                {this.state.loading && <p className='loading'>Logging You In ...</p>}
                 <div role='alert'>
                     {error && <p className='error'>{error}</p>}
                 </div>
