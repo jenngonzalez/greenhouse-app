@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Moment from 'react-moment';
-import 'moment-timezone';
 import GetPlantsApiService from '../../services/getplants-api-service';
 import GreenhouseContext from '../../contexts/GreenhouseContext';
 import './UserPlants.css';
@@ -32,6 +30,7 @@ export default class UserPlants extends Component {
             .then(plantData => {
                 const userPlants = plantData.map(plant => {
                     return {
+                        id: plant.id,
                         name: plant.name,
                         family: plant.family,
                         watered: plant.watered,
@@ -48,12 +47,12 @@ export default class UserPlants extends Component {
 
     renderPlants = () => {
         const { username } = this.props.match.params
-        return this.context.plants.map((plant,index) =>
-            <section className='userPlant' key={index}>
+        return this.context.plants.map(plant =>
+            <section className='userPlant' key={plant.id}>
                 <Link to={{
-                    pathname: `/user/${username}/${index}`,
+                    pathname: `/user/${username}/${plant.id}`,
                     state: {
-                        key: index,
+                        id: plant.id,
                         name: plant.name,
                         family: plant.family,
                         watered: plant.watered,
@@ -74,7 +73,7 @@ export default class UserPlants extends Component {
         const { username } = this.props.match.params
         return (
             <div className="plant-container">
-                <h2>{username}'s Garden</h2>
+                <h2>{username}'s garden</h2>
                 <div className="plant-list">
                     {this.renderPlants()}
                 </div>

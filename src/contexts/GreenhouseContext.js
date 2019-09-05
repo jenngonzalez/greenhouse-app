@@ -3,7 +3,7 @@ import React from 'react';
 const GreenhouseContext = React.createContext({
     plants: [],
     addPlant: () => {},
-    removePlant: () => {},
+    deletePlant: () => {},
     updatePlant: () => {},
     addPlants: () => {}
 })
@@ -19,11 +19,21 @@ export class GreenhouseProvider extends React.Component {
         this.setState({plants: [...this.state.plants, plant]})
     }
 
-    removePlant = plant => {
+    deletePlant = plant => {
         this.setState({plants: [...this.state.plants.filter(p => {
             return p.id !== plant.id 
         })]})
     }
+
+
+    // deletePlant = plant => {
+    //     const newPlants = this.state.plants.filter(p =>
+    //     p.id !== plant.id
+    //     )
+    //     this.setState({
+    //     plants: newPlants
+    //     })
+    // }
 
     updatePlant = plant => {
         this.setState({plants: [...this.state.plants.map(p => {

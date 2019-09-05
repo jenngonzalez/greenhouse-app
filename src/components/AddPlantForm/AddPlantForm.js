@@ -156,8 +156,10 @@ export default class AddPlantForm extends Component {
                         value={this.state.image}
                         onChange={this.handleChangeImage}
                     />
-                    <button type='submit' onClick={this.handleSubmit}>Submit</button>
-                    <button onClick={this.handleCancel}>Go Back</button>
+                    <section className='add-form-buttons'>
+                        <button type='submit' onClick={this.handleSubmit}>Submit</button>
+                        <button onClick={this.handleCancel}>Go Back</button>
+                    </section>
                 </form>
             </div>
         )

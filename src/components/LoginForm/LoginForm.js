@@ -70,9 +70,10 @@ export default class LoginForm extends Component {
                             required
                         />
                 </div>
-                <button type='submit'>Login</button>
-                <input type='button' name='cancel' value='cancel' onClick={this.props.onCancel} />
-                {/* <button onClick={this.props.onCancel}>Cancel</button> */}
+                <div className='login-buttons'>
+                    <button type='submit'>Login</button>
+                    <input type='button' name='cancel' value='Cancel' onClick={this.props.onCancel} />
+                </div>
             </form>
         )
     }

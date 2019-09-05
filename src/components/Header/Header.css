@@ -41,12 +41,12 @@
 }
 
 .header-logged-out {
-    font-size: 14px;
+    font-size: 12px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     width: 100%;
-    margin-left: auto;
+    margin-left: 70px;
     margin-right: auto;
 }
 
@@ -54,4 +54,11 @@
     margin-right: 10px;
     color: #353EE5;
     font-family: 'Darker Grotesque', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.header-logged-out a:hover {
+    cursor: pointer;
+    color: #FF7D12;
 }

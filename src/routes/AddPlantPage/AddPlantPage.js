@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import AddPlantForm from '../../components/AddPlantForm/AddPlantForm';
 import TokenService from '../../services/token-service';
-// import { Redirect } from 'react-router';
-// import AuthContext from '../../contexts/AuthContext';
+import './AddPlantPage.css';
 
-
-// TODO: insert placeholder image if search result item doesn't have an associated image
 
 export default class AddPlantPage extends Component {
 
@@ -24,8 +21,6 @@ export default class AddPlantPage extends Component {
             push: () => {}
         }
     }
-
-    // static contextType = AuthContext
 
     handleAddPlantSuccess = () => {
         const { history } = this.props

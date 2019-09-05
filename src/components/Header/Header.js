@@ -63,7 +63,7 @@ export default class Header extends Component {
 
   renderLoginLink() {
     return (
-      <div className='header-not-logged-in'>
+      <div className='header-logged-out'>
         <Link
           to='/signup'>
           Sign Up

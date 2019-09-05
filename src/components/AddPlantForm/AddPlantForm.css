@@ -1,23 +1,15 @@
 * {
     box-sizing: border-box;
   }
-  
-body {
-    font-family: "Open Sans",
-    sans-serif;
-    font-size: 20px;
-    color: #444;
-    text-align: center;
-    line-height: 1.5;
-}
 
 .plant-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: auto;
-    margin-top: 15px;
+    /* margin-top: 15px; */
     padding: 10px;
+    font-family: 'Manjari', sans-serif;
 }
 
 .plant-form input, textarea {
@@ -28,7 +20,29 @@ body {
 }
 
 .plant-form button {
-    width: 15%;
-    margin: auto;
+    font-family: 'Manjari', sans-serif;
+    width: 75px;
+    height: 50px;
+    background: rgb(47, 233, 180);
+    border: 2px solid black;
+    margin: 10px;
     margin-top: 20px;
+}
+
+.plant-form button:hover {
+    cursor: pointer;
+}
+
+.add-form-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.add-plant-form h2 {
+    font-family: 'Bad Script', cursive;
+    font-size: 25px;
+    color: rgb(21, 141, 109);
+    margin-top: 30px;
+    /* border-bottom: 1px solid black; */
 }
