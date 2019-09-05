@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import 'moment-timezone';
 import GetPlantsApiService from '../../services/getplants-api-service';
@@ -46,13 +47,25 @@ export default class UserPlants extends Component {
     }
 
     renderPlants = () => {
+        const { username } = this.props.match.params
         return this.context.plants.map((plant,index) =>
             <section className='userPlant' key={index}>
-                <span className='span-name'><p className='name'>{plant.name}</p></span>
-                <p className='family'><span className='plant-heading'>Plant Family: </span> {plant.family}</p>
-                <p className='watered'><span className='plant-heading'>Last Watered: </span> <Moment format="MM/DD/YY">{plant.watered}</Moment></p>
-                <p className='notes'><span className='plant-heading'>Notes: </span> {plant.notes}</p>
-                <img className='image' src={plant.image} alt='' />
+                <Link to={{
+                    pathname: `/user/${username}/${index}`,
+                    state: {
+                        key: index,
+                        name: plant.name,
+                        family: plant.family,
+                        watered: plant.watered,
+                        notes: plant.notes,
+                        image: plant.image
+                    }
+                }}>
+                <section className='within-link'>
+                    <span className='span-name'><p className='name'>{plant.name}</p></span>
+                    <img className='image' src={plant.image} alt='' />
+                </section>
+                </Link>
             </section>
         )
     }

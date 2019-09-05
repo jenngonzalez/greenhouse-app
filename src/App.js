@@ -8,6 +8,7 @@ import SignUpPage from './routes/SignupPage/SignUpPage';
 import LoginPage from './routes/LoginPage/LoginPage';
 import SearchResults from './routes/SearchResultsPage/SearchResults';
 import UserPlants from './routes/UserPlants/UserPlants';
+import UserUniquePlant from './routes/UserUniquePlant/UserUniquePlant';
 import AddPlantForm from './components/AddPlantForm/AddPlantForm';
 import NotFoundPage from './routes/NotFoundPage/NotFoundPage';
 import AuthContext from './contexts/AuthContext';
@@ -71,10 +72,14 @@ class App extends Component {
                 component={SearchResults}
               />
               <Route
-                path='/user/:username'
+                exact path='/user/:username'
                 component={UserPlants}
               />
               {/* is there any way for the path to be just '/username' without disrupting the other endpoints? */}
+              <Route
+                exact path='/user/:username/:plant'
+                component={UserUniquePlant}
+              />
               <Route
                 path='/addplant'
                 component={AddPlantForm}
