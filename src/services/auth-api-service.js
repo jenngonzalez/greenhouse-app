@@ -1,20 +1,15 @@
 import config from '../config';
-// import AuthContext from '../contexts/AuthContext';
 
 
-// TODO: WIP error handling -
-    // how to get error message to the client?
-    // how to NOT redirect to login page on anything other than status 201?
 
 function handleErrors(response) {
-    // if (!response.ok) {
-    //     // response.json().then(e => Promise.reject(e))
-    //     throw response
-    // }
     if (response.status !== 201) {
-        throw response
+        return response.json().then((body) => {
+            throw new Error(body.error)
+        })
+    } else {
+        return response;
     }
-    return response;
 }
 
 const AuthApiService = {
@@ -40,19 +35,7 @@ const AuthApiService = {
             },
             body: JSON.stringify(credentials)
         })
-            // .then(res => {
-            //     (!res.ok)
-            //         ? res.json().then(e => Promise.reject(e))
-            //         : res.json()
-            // })
             .then(handleErrors)
-            .then(response => console.log(response))
-            .catch( error => {
-                error.json().then(errorMessage => {
-                    console.log(errorMessage)
-                })
-                Promise.reject(error.statusText)
-            })
     }
 }
 

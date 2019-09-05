@@ -8,11 +8,15 @@ export default class SignUpForm extends Component {
         onCancel: () => {}
     }
 
-    state = { error: null }
+    constructor(props) {
+        super(props)
+        this.state = { error: '' }
+    }
+
 
     handleSubmit = e => {
         e.preventDefault()
-        this.setState({ error: null })
+        // this.setState({ error: null })
         const { email, username, password } = e.target
 
         AuthApiService.postUser({
@@ -26,15 +30,13 @@ export default class SignUpForm extends Component {
                 password.value = ''
                 this.props.onSignUpSuccess()
             })
-            .catch(res => {
-                this.setState({ error: res.error })
-                console.log(this.state.error)
+            .catch(error => {
+                this.setState({ error: error.message })
             })
     }
 
     render() {
         const { error } = this.state
-        console.log(this.state.error)
         return (
             <form
                 className='signup-form'
@@ -42,7 +44,7 @@ export default class SignUpForm extends Component {
                 onSubmit={this.handleSubmit}
             >
                 <div role='alert'>
-                    {error && <p className='red'>{error}</p>}
+                    {!!error.length && <p className='red'>{error}</p>}
                 </div>
                 <div className='email'>
                     <label htmlFor='email'>Email Address:</label>

@@ -4,6 +4,8 @@ import 'moment-timezone';
 import GetPlantsApiService from '../../services/getplants-api-service';
 import GreenhouseContext from '../../contexts/GreenhouseContext';
 import './UserPlants.css';
+import placeholder from './placeholder.png';
+
 
 export default class UserPlants extends Component {
 
@@ -33,7 +35,7 @@ export default class UserPlants extends Component {
                         family: plant.family,
                         watered: plant.watered,
                         notes: plant.notes,
-                        image: plant.image || ''
+                        image: plant.image || placeholder
                     }
                 })
                 this.context.addPlants(userPlants)
