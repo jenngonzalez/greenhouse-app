@@ -50,11 +50,11 @@ export default class UserUniquePlant extends Component {
         } else {
             DeletePlantApiService.deletePlant(loggedInUser, deletedPlant)
             .then(this.context.deletePlant(deletedPlant))
-            .then(this.handleDeletePlantSuccess())
+            .then(this.handleDeleteSuccess())
         }
     }
 
-    handleDeletePlantSuccess = () => {
+    handleDeleteSuccess = () => {
         const { history } = this.props
         const username = TokenService.getUserName()
         history.push(`/user/${username}`)

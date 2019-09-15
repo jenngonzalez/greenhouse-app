@@ -13,6 +13,7 @@ const PlantContext = React.createContext({
   error: null,
   setError: () => {},
   addPlant: () => {},
+  deletePlant: () => {},
 })
 
 export default PlantContext

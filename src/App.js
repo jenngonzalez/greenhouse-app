@@ -75,7 +75,7 @@ class App extends Component {
                 exact path='/user/:username'
                 component={UserPlants}
               />
-              {/* is there any way for the path to be just '/username' without disrupting the other endpoints? */}
+              {/* is there any way for the path to be just '/:username' without disrupting the other endpoints? */}
               <Route
                 exact path='/user/:username/:plant'
                 component={UserUniquePlant}

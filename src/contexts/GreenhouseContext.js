@@ -10,9 +10,13 @@ const GreenhouseContext = React.createContext({
 
 export default GreenhouseContext
 
-export class GreenhouseProvider extends React.Component { 
-    state = {
-        plants: []
+export class GreenhouseProvider extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            plants: []
+        }
     }
 
     addPlant = plant => {
@@ -20,20 +24,12 @@ export class GreenhouseProvider extends React.Component {
     }
 
     deletePlant = plant => {
-        this.setState({plants: [...this.state.plants.filter(p => {
-            return p.id !== plant.id 
-        })]})
+        const newPlants = this.state.plants.filter(p => {
+            return p.id !== parseInt(plant)
+        })
+        this.setState({ plants: [...newPlants] }, () => {
+        })
     }
-
-
-    // deletePlant = plant => {
-    //     const newPlants = this.state.plants.filter(p =>
-    //     p.id !== plant.id
-    //     )
-    //     this.setState({
-    //     plants: newPlants
-    //     })
-    // }
 
     updatePlant = plant => {
         this.setState({plants: [...this.state.plants.map(p => {
@@ -49,7 +45,7 @@ export class GreenhouseProvider extends React.Component {
         const value = {
             plants: this.state.plants,
             addPlant: this.addPlant,
-            removePlant: this.removePlant,
+            deletePlant: this.deletePlant,
             updatePlant: this.updatePlant,
             addPlants: this.addPlants
         }
