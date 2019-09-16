@@ -18,7 +18,6 @@ export default class UserPlants extends Component {
     }
 
     componentDidMount() {
-        console.log('componentDidMount')
         const { username } = this.props.match.params
         GetPlantsApiService.getPlants(username)
             .then(plantData => {
@@ -40,7 +39,6 @@ export default class UserPlants extends Component {
     }
 
     renderPlants = () => {
-        console.log('renderPlants function')
         const { username } = this.props.match.params
         return this.context.plants.map(plant =>
             <section className='userPlant' key={plant.id}>
@@ -65,7 +63,6 @@ export default class UserPlants extends Component {
     }
 
     render() {
-        console.log(this.context.plants)
         const { username } = this.props.match.params
         return (
             <div className="plant-container">
