@@ -31,6 +31,10 @@ export default class AddPlantPage extends Component {
         history.push(`/user/${username}`)
     }
 
+    handleCancel = () => {
+        this.props.history.goBack()
+    }
+
 
     render() {
         const plantDetails = {
@@ -40,8 +44,7 @@ export default class AddPlantPage extends Component {
         }
         return (
             <div className="add-plant-page">
-                <h2>Add a Plant</h2>
-                <AddPlantForm onAddSuccess={this.handleAddPlantSuccess} plantDetails={plantDetails}/>
+                <AddPlantForm onAddSuccess={this.handleAddPlantSuccess} onCancel={this.handleCancel} plantDetails={plantDetails}/>
             </div>
         )
     }

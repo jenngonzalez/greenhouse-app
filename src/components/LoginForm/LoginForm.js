@@ -20,7 +20,6 @@ export default class LoginForm extends Component {
 
     handleSubmitAuth = e => {
         e.preventDefault()
-        // this.setState({ error: null })
         this.setState({ loading: true })
         const { email, password } = e.target
 

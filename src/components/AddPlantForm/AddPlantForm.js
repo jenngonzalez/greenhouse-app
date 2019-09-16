@@ -3,8 +3,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './AddPlantForm.css';
 import AddPlantApiService from '../../services/addplant-api-service';
-import TokenService from '../../services/token-service';
 import GreenhouseContext from '../../contexts/GreenhouseContext';
+import placeholder from './placeholder.png';
 
 
 export default class AddPlantForm extends Component {
@@ -14,29 +14,23 @@ export default class AddPlantForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            name: this.props.location.state.name,
-            family: this.props.location.state.family,
+            name: this.props.plantDetails.name,
+            family: this.props.plantDetails.family,
             watered: new Date(),
             notes: '',
-            image: this.props.location.state.image
-        };
-    }
-
-    static defaultProps = {
-        location: {},
-        history: {
-            push: () => {}
+            image: this.props.plantDetails.image
         }
     }
 
-
-    handleAddSuccess = () => {
-        const { history } = this.props
-        const username = TokenService.getUserName()
-        history.push(`/user/${username}`)
+    static defaultProps = {
+        plantDetails: {},
+        location: {},
+        history: {
+            push: () => {}
+        },
+        onAddSuccess: () => {},
+        onCancel: () => {}
     }
-
-
 
     handleChangeName = (e) => {
         this.setState({
@@ -74,21 +68,18 @@ export default class AddPlantForm extends Component {
             alert('Plant name is required')
             return false
         }
+
         const newPlant = {
             name: this.state.name,
             family: this.state.family,
             watered: this.state.watered,
             notes: this.state.notes,
-            image: this.state.image
+            image: this.state.image === '' ? placeholder : this.state.image
         }
         AddPlantApiService.postPlant(newPlant)
             .then(this.context.addPlant)
-            .then(this.handleAddSuccess())
-            // .catch(this.context.setError)
-    }
-
-    handleCancel = () => {
-        this.props.history.goBack()
+            .then(this.props.onAddSuccess)
+            .catch(this.context.setError)
     }
 
     render() {
@@ -158,7 +149,7 @@ export default class AddPlantForm extends Component {
                     />
                     <section className='add-form-buttons'>
                         <button type='submit' onClick={this.handleSubmit}>Submit</button>
-                        <button onClick={this.handleCancel}>Go Back</button>
+                        <button onClick={this.props.onCancel}>Go Back</button>
                     </section>
                 </form>
             </div>

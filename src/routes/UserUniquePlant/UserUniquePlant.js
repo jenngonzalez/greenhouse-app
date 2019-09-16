@@ -18,8 +18,20 @@ export default class UserUniquePlant extends Component {
         }
     }
 
-    // updating plant will need to update context so UserPlants page will be updated!
-    // same for delete plant
+    // TODO:
+        // updating plant will need to update context so UserPlants page will be updated!
+            // don't show edit or delete buttons unless logged in username matches the username param
+            // add 'userLoggedIn' to state (t/f)
+            // on page load (componentDidMount?) - check if user being viewed is also logged in
+            // if so, then set userLoggedIn to true,
+            // dynamically render links
+            // (if false, no edit/delete links are shown)
+
+        // have user confirm before deleting (alert?)
+            // create alert? with yes/no buttons
+            // if yes, continue
+            // if no, cancel alert and return to plant page
+
 
     constructor(props) {
         super(props)
@@ -29,17 +41,6 @@ export default class UserUniquePlant extends Component {
         }
     }
 
-    // don't show edit or delete buttons unless logged in username matches the username param
-    // add 'userLoggedIn' to state (t/f)
-    // on page load (componentDidMount?) - check if user being viewed is also logged in
-    // if so, then set userLoggedIn to true,
-    // dynamically render links
-    // (if false, no edit/delete links are shown)
-
-    // have user confirm before deleting (alert?)
-    // create alert? with yes/no buttons
-    // if yes, continue
-    // if no, cancel alert and return to plant page
 
     handleDeletePlant = () => {
         const paramUserName = this.props.match.params.username

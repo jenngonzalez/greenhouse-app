@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import TokenService from '../../services/token-service';
-// import { Redirect } from 'react-router';
 import './LoginPage.css';
 import AuthContext from '../../contexts/AuthContext';
 
