@@ -2,34 +2,9 @@
     box-sizing: border-box;
   }
   
-  body {
-    font-family: "Open Sans",
-    sans-serif;
-    font-size: 20px;
-    color: #444;
-    text-align: center;
-    line-height: 1.5;
-  }
-
-  .signup-form {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-  }
-
-  .signup-form input {
-      width: 60%;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: 10px;
-  }
-
-  .signup-form button {
-      width: 15%;
-      margin: auto;
-      margin-top: 20px;
-  }
-
-  div[role='alert'] {
-      color: red;
-  }
+.signup-page h2 {
+    font-family: 'Bad Script', cursive;
+    font-size: 25px;
+    color: rgb(21, 141, 109);
+    margin-top: 30px;
+}

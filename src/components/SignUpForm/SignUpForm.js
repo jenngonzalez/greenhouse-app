@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AuthApiService from '../../services/auth-api-service';
+import './SignUpForm.css';
 
 
 export default class SignUpForm extends Component {
@@ -16,7 +17,6 @@ export default class SignUpForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        // this.setState({ error: null })
         const { email, username, password } = e.target
 
         AuthApiService.postUser({
@@ -46,35 +46,31 @@ export default class SignUpForm extends Component {
                 <div role='alert'>
                     {!!error.length && <p className='red'>{error}</p>}
                 </div>
-                <div className='email'>
-                    <label htmlFor='email'>Email Address:</label>
-                    <input
-                        type='email'
-                        name='email'
-                        id='email'
-                        required
-                    />
+                <label htmlFor='email'>Email Address:</label>
+                <input
+                    type='email'
+                    name='email'
+                    id='email'
+                    required
+                />
+                <label htmlFor='username'>Username:</label>
+                <input
+                    type='text'
+                    name='username'
+                    id='username'
+                    required
+                />
+                <label htmlFor='password'>Password:</label>
+                <input
+                    type='password'
+                    name='password'
+                    id='password'
+                    required
+                />
+                <div className='signup-buttons'>
+                    <button type='submit'>Sign Up</button>
+                    <button onClick={this.props.onCancel}>Cancel</button>
                 </div>
-                <div className='username'>
-                    <label htmlFor='username'>Username:</label>
-                    <input
-                        type='text'
-                        name='username'
-                        id='username'
-                        required
-                    />
-                </div>
-                <div className='password'>
-                    <label htmlFor='password'>Password:</label>
-                    <input
-                        type='password'
-                        name='password'
-                        id='password'
-                        required
-                    />
-                </div>
-                <button type='submit'>Sign Up</button>
-                <button onClick={this.props.onCancel}>Cancel</button>
             </form>
         )
     }

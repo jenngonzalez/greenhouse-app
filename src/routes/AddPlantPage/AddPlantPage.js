@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import AddPlantForm from '../../components/AddPlantForm/AddPlantForm';
 import TokenService from '../../services/token-service';
-import './AddPlantPage.css';
 import placeholder from './placeholder.png'
 
 // TODO - should we import the image into this component so it will be sent properly on redirect to the user plants page? plant is showing up after adding but image doesn't show up until reload

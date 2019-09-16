@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TokenService from '../../services/token-service';
 import AuthApiService from '../../services/auth-api-service';
+import './LoginForm.css';
 
 
 
@@ -51,24 +52,20 @@ export default class LoginForm extends Component {
                 <div role='alert'>
                     {error && <p className='error'>{error}</p>}
                 </div>
-                <div className='email'>
-                    <label htmlFor='email'>Email Address:</label>
-                        <input
-                            type='email'
-                            name='email'
-                            id='email'
-                            required
-                        />
-                </div>
-                <div className='password'>
-                    <label htmlFor="password">Password:</label>
-                        <input
-                            type='password'
-                            name='password'
-                            id='password'
-                            required
-                        />
-                </div>
+                <label htmlFor='email'>Email Address:</label>
+                <input
+                    type='email'
+                    name='email'
+                    id='email'
+                    required
+                />
+                <label htmlFor="password">Password:</label>
+                <input
+                    type='password'
+                    name='password'
+                    id='password'
+                    required
+                />
                 <div className='login-buttons'>
                     <button type='submit'>Login</button>
                     <input type='button' name='cancel' value='Cancel' onClick={this.props.onCancel} />
