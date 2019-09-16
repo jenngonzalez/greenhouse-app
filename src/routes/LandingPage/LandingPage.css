@@ -19,7 +19,7 @@
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
-      margin-left: 5px;
+      padding-left: 10px;
   }
 
   .search-form input {
