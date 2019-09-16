@@ -9,9 +9,17 @@
     line-height: 1.5;
   }
 
+  .search-bar {
+      font-family: 'Bad Script', cursive;
+  }
+
   .search-form {
       display: block;
       margin-top: 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-left: 5px;
   }
 
   .search-form input {
@@ -37,6 +45,9 @@
 
   .descriptions {
       padding-top: 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
   }
 
   .app-description h2 {
