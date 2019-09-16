@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import TokenService from '../../services/token-service';
 import './Header.css';
-// import AuthContext from '../../contexts/AuthContext';
+import icon from './growth.png';
+
+
 
 export default class Header extends Component {
 
-//   static contextType = AuthContext
 
   static defaultProps = {
     loggedIn: false
@@ -79,11 +80,14 @@ export default class Header extends Component {
   render() {
     return (
       <nav className='Header'>
-        <h1>
-          <Link to='/'>
-            Digital Greenhouse
-          </Link>
-        </h1>
+        <div className='header-and-icon'>
+          <h1>
+            <Link to='/'>
+              Digital Greenhouse
+            </Link>
+          </h1>
+          <img src={icon} alt=''/>
+        </div>
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
           : this.renderLoginLink()}

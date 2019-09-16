@@ -13,10 +13,34 @@ code {
     monospace;
 }
 
+footer {
+  margin-top: 150px;
+  font-size: 8px;
+}
+
+.copyright {
+  font-size: 10px;
+}
+
+footer a {
+  text-decoration: none;
+  color: #353EE5;
+}
+
+footer a:hover {
+  cursor: pointer;
+  color: #FF7D12;
+}
+
+footer a:visited {
+  color: rgb(23, 104, 82);
+}
+
 @media screen and (min-height: 680px) {
   /* .app-header {
     background-color: blue;
   } */
+  /* TODO - transition from 2 columns to more on larger screen */
 }
 
 @media screen and (max-width: 380px) {

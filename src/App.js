@@ -90,6 +90,12 @@ class App extends Component {
               />
             </Switch>
           </main>
+          <footer>
+            <div>
+              <p className='copyright'>&copy; Jennifer Gonzalez 2019</p>
+              <p>Icons made by <a href="https://www.flaticon.com/authors/darius-dan" title="Darius Dan">Darius Dan</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a></p>
+            </div>
+          </footer>
         </AuthContext.Provider>
       </div>
     )

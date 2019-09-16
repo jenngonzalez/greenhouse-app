@@ -26,11 +26,7 @@ export default class UserUniquePlant extends Component {
             // if so, then set userLoggedIn to true,
             // dynamically render links
             // (if false, no edit/delete links are shown)
-
-        // have user confirm before deleting (alert?)
-            // create alert? with yes/no buttons
-            // if yes, continue
-            // if no, cancel alert and return to plant page
+        // EDIT will transform page into form elements, submit PATCH request to server, then transform page back into normal page elements, saving updates
 
 
     constructor(props) {
@@ -80,9 +76,20 @@ export default class UserUniquePlant extends Component {
                     <p>Notes: {this.state.plant.notes}</p>
                 </section>
                 <button className='edit'>Edit</button>
-                <button className='delete' onClick={this.handleDeletePlant}>Delete</button>
-                {/* confirm delete before deleting */}
-                <button className='back' onClick={this.handleGoBack}>Back to Greenhouse</button>
+                <button
+                    className='delete'
+                    onClick={e =>
+                        window.confirm("Are you sure you wish to delete this plant?") && this.handleDeletePlant(e)
+                    }
+                >
+                        Delete
+                </button>
+                <button
+                    className='back'
+                    onClick={this.handleGoBack}
+                >
+                    Back to Greenhouse
+                </button>
             </div>
         )
     }
