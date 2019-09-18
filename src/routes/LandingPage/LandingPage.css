@@ -42,6 +42,7 @@ body {
     background: rgb(47, 233, 180);
     border: 1px solid black;
     padding: 5px;
+    border-radius: 5px;
 }
 
 .search-form button:hover {
@@ -77,4 +78,11 @@ hr {
     font-size: 18px;
     width: 75%;
     margin: auto;
+    font-weight: normal;
+}
+
+.app-description p {
+    font-family: 'Manjari', sans-serif;
+    font-size: 16px;
+    margin: 0;
 }

@@ -50,6 +50,12 @@ export default class LandingPage extends Component {
                         <h3>Receive push notifications with reminders to water or feed your plants.</h3>
                     </div>
                     <hr />
+                    <div className='app-description test-login'>
+                        <h2>Try it out!</h2>
+                        <p>email: testclient1@gmail.com</p>
+                        <p>password: Password1</p>
+                    </div> 
+                    <hr />
                 </div>
             </div>
         )

@@ -1,8 +1,4 @@
-* {
-    box-sizing: border-box;
-  }
-  
-.signup-page h2 {
+.add-plant-form h2 {
     font-family: 'Bad Script', cursive;
     font-size: 25px;
     color: rgb(21, 141, 109);

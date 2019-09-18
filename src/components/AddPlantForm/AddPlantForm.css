@@ -43,10 +43,3 @@
     flex-direction: row;
     justify-content: center;
 }
-
-.add-plant-form h2 {
-    font-family: 'Bad Script', cursive;
-    font-size: 25px;
-    color: rgb(21, 141, 109);
-    margin-top: 30px;
-}
