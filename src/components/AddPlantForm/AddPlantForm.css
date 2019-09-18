@@ -7,7 +7,6 @@
     flex-direction: column;
     justify-content: center;
     margin: auto;
-    /* margin-top: 15px; */
     padding: 10px;
     font-family: 'Manjari', sans-serif;
     max-width: 800px;
@@ -18,14 +17,18 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid rgb(47, 233, 180);
+    font-family: 'Manjari', sans-serif;
 }
 
 .add-form-buttons button {
     font-family: 'Manjari', sans-serif;
+    font-size: 14px;
     width: 75px;
     height: 50px;
     background: rgb(47, 233, 180);
-    border: 2px solid black;
+    border: 1px solid black;
     border-radius: 5px;
     margin: 10px;
     margin-top: 20px;
@@ -46,5 +49,4 @@
     font-size: 25px;
     color: rgb(21, 141, 109);
     margin-top: 30px;
-    /* border-bottom: 1px solid black; */
 }

@@ -13,8 +13,11 @@ code {
     monospace;
 }
 
+main {
+  min-height: 75vh;
+}
+
 footer {
-  margin-top: 150px;
   font-size: 8px;
 }
 
@@ -25,6 +28,7 @@ footer {
 footer a {
   text-decoration: none;
   color: #353EE5;
+  font-size: 8px;
 }
 
 footer a:hover {
@@ -34,17 +38,4 @@ footer a:hover {
 
 footer a:visited {
   color: rgb(23, 104, 82);
-}
-
-@media screen and (min-height: 680px) {
-  /* .app-header {
-    background-color: blue;
-  } */
-  /* TODO - transition from 2 columns to more on larger screen */
-}
-
-@media screen and (max-width: 380px) {
-  /* .app-header {
-    background-color: green;
-  } */
 }

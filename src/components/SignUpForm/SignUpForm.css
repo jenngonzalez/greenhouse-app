@@ -1,15 +1,6 @@
 * {
     box-sizing: border-box;
   }
-  
-  body {
-    font-family: "Open Sans",
-    sans-serif;
-    font-size: 20px;
-    color: #444;
-    text-align: center;
-    line-height: 1.5;
-  }
 
   .signup-form {
       display: flex;
@@ -26,6 +17,9 @@
       margin-left: auto;
       margin-right: auto;
       margin-bottom: 10px;
+      padding: 5px;
+      border: 1px solid rgb(47, 233, 180);
+      font-family: 'Manjari', sans-serif;
   }
 
   .signup-form button {
@@ -34,8 +28,9 @@
       margin: 10px;
       margin-top: 20px;
       font-family: 'Manjari', sans-serif;
+      font-size: 14px;
       background: rgb(47, 233, 180);
-      border: 2px solid black;
+      border: 1px solid black;
       border-radius: 5px;
   }
 

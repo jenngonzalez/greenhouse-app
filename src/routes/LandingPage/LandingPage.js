@@ -26,10 +26,12 @@ export default class LandingPage extends Component {
                             Search for a plant:
                         </label>
                         <br />
+                        <div className='bar-and-button'>
                         <input
-                            type="text" name="search-bar" id="search-bar" placeholder="Search Term" value={this.state.searchTerm} onChange={this.handleChange}
+                            type="text" name="search-bar" id="search-bar" placeholder="search term" value={this.state.searchTerm} onChange={this.handleChange}
                         />
-                        <Link to={{pathname: '/results', state: { searchTerm: this.state.searchTerm } }}><button>Go</button></Link>
+                        <Link to={{pathname: '/results', state: { searchTerm: this.state.searchTerm } }}><button>submit</button></Link>
+                        </div>
                     </form>
                 </div>
                 <div className='descriptions'>

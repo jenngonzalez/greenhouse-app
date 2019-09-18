@@ -51,6 +51,7 @@ export default class SignUpForm extends Component {
                     type='email'
                     name='email'
                     id='email'
+                    autoComplete='email'
                     required
                 />
                 <label htmlFor='username'>Username:</label>
@@ -58,6 +59,7 @@ export default class SignUpForm extends Component {
                     type='text'
                     name='username'
                     id='username'
+                    autoComplete='username'
                     required
                 />
                 <label htmlFor='password'>Password:</label>
@@ -65,6 +67,7 @@ export default class SignUpForm extends Component {
                     type='password'
                     name='password'
                     id='password'
+                    autoComplete='password'
                     required
                 />
                 <div className='signup-buttons'>

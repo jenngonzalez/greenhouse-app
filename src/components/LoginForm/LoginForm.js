@@ -57,6 +57,7 @@ export default class LoginForm extends Component {
                     type='email'
                     name='email'
                     id='email'
+                    autoComplete='your email'
                     required
                 />
                 <label htmlFor="password">Password:</label>
@@ -64,6 +65,7 @@ export default class LoginForm extends Component {
                     type='password'
                     name='password'
                     id='password'
+                    autoComplete='your password'
                     required
                 />
                 <div className='login-buttons'>

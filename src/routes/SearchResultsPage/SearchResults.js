@@ -80,36 +80,38 @@ export default class SearchResults extends Component {
         const plantDetails = this.state.plants.map((plant, index) => {
             return (
                 <section key={index}>
-                <p>Plant Name: {plant.name}</p>
-                <p>Plant Family: {plant.family} </p>
-                <p><img src={plant.image} alt={plant.name} /></p>
-                <Link
-                    to={{pathname: '/addplant',
-                        state: {
-                            name: plant.name,
-                            family: plant.family,
-                            image: plant.image
-                        }
-                    }}
-                >
-                    Add Plant to Your Greenhouse
-                </Link>
-            </section>
+                    <p>{plant.name},</p>
+                    <p>{plant.family}</p>
+                    <p><img src={plant.image} alt={plant.name} className='search-image' /></p>
+                    <Link
+                        to={{pathname: '/addplant',
+                            state: {
+                                name: plant.name,
+                                family: plant.family,
+                                image: plant.image
+                            }
+                        }}
+                    >
+                        Add To Your Greenhouse
+                    </Link>
+                </section>
             )
         })
 
 
         return (
-            <div className="container">
+            <div className="results-container">
                 <div className="search-bar-container">
-                    <form className="search-form" onSubmit={this.submitNewSearch}>
+                    <form className="results-search-form" onSubmit={this.submitNewSearch}>
                         <input
                             type="text" name="searchTerm" id="searchTerm" placeholder="Search again"
                         />
-                        <button type='submit'>Search</button>
+                        <button type='submit'>Go</button>
                     </form>
                 </div>
-                Number of Results: {this.state.loading ? <p className='loading'>Loading ...</p> : this.state.plants.length}
+                <div className='number-of-results'>
+                    Number of Results: <span>{this.state.loading ? <p className='loading'>Loading ...</p> : this.state.plants.length}</span>
+                </div>
                 <div className="search-results">
                     {plantDetails}
                 </div>

@@ -25,14 +25,14 @@
     width: 100%;
     margin-left: 30px;
     margin-right: auto;
+    margin-top: 10px;
 }
 
 .header-logged-in a {
     margin-right: 10px;
     color: #353EE5;
-    font-family: 'Darker Grotesque', sans-serif;
+    font-family: 'Manjari', sans-serif;
     font-size: 16px;
-    font-weight: bold;
 }
 
 .header-logged-in a:hover{
@@ -48,14 +48,14 @@
     width: 100%;
     margin-left: 70px;
     margin-right: auto;
+    margin-top: 5px;
 }
 
 .header-logged-out a {
     margin-right: 10px;
     color: #353EE5;
-    font-family: 'Darker Grotesque', sans-serif;
+    font-family: 'Manjari', sans-serif;
     font-size: 16px;
-    font-weight: bold;
 }
 
 .header-logged-out a:hover {

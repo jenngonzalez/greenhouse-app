@@ -17,6 +17,8 @@
       margin-bottom: 10px;
       margin-left: auto;
       margin-right: auto;
+      padding: 5px;
+      border: 1px solid rgb(47, 233, 180);
   }
 
   .login-buttons {
@@ -31,8 +33,9 @@
       margin: 10px;
       margin-top: 20px;
       font-family: 'Manjari', sans-serif;
+      font-size: 14px;
       background: rgb(47, 233, 180);
-      border: 2px solid black;
+      border: 1px solid black;
       border-radius: 5px;
   }
 
