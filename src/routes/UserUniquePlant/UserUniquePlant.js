@@ -46,7 +46,7 @@ export default class UserUniquePlant extends Component {
             return alert ('Permission denied')
         } else {
             DeletePlantApiService.deletePlant(loggedInUser, deletedPlant)
-            .then(this.context.deletePlant(deletedPlant))
+            .then(this.context.deletePlant)
             .then(this.handleDeleteSuccess())
         }
     }
@@ -79,7 +79,7 @@ export default class UserUniquePlant extends Component {
                 <button
                     className='delete'
                     onClick={e =>
-                        window.confirm("Are you sure you wish to delete this plant?") && this.handleDeletePlant(e)
+                        window.confirm("Are you sure you wish to delete this plant?") && this.handleDeletePlant()
                     }
                 >
                         Delete
