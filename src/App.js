@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-// import PrivateRoute from './components/Utils/PrivateRoute';
 import PublicOnlyRoute from './components/Utils/PublicOnlyRoute';
 import Header from './components/Header/Header';
 import LandingPage from './routes/LandingPage/LandingPage';
@@ -10,10 +9,8 @@ import SearchResults from './routes/SearchResultsPage/SearchResults';
 import UserPlants from './routes/UserPlants/UserPlants';
 import UserUniquePlant from './routes/UserUniquePlant/UserUniquePlant';
 import AddPlantPage from './routes/AddPlantPage/AddPlantPage';
-// import AddPlantForm from './components/AddPlantForm/AddPlantForm';
 import NotFoundPage from './routes/NotFoundPage/NotFoundPage';
 import AuthContext from './contexts/AuthContext';
-// import TokenService from './services/token-service';
 
 class App extends Component {
 
@@ -22,7 +19,6 @@ class App extends Component {
     loggedIn: false
   }
 
-  // static contextType = AuthContext
 
   static getDerivedStateFromError(error) {
     console.error(error)
@@ -91,10 +87,8 @@ class App extends Component {
             </Switch>
           </main>
           <footer>
-            <div>
-              <p className='copyright'>&copy; Jennifer Gonzalez 2019</p>
-              <p>Icons made by <a href="https://www.flaticon.com/authors/darius-dan" title="Darius Dan">Darius Dan</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a></p>
-            </div>
+            <p className='copyright'>&copy; Jennifer Gonzalez 2019</p>
+            <p>Icons made by <a href="https://www.flaticon.com/authors/darius-dan" title="Darius Dan">Darius Dan</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a></p>
           </footer>
         </AuthContext.Provider>
       </div>
