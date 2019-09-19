@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import EditPlantForm from '../../components/EditPlantForm/EditPlantForm';
 import EditPlantApiService from '../../services/editplant-api-service';
 import Moment from 'react-moment';
 import 'moment-timezone';
@@ -27,10 +26,9 @@ export default class UserUniquePlant extends Component {
     constructor(props) {
         super(props)
         const userPlant = this.props.location.state
-        // can we get userPlant from context instead?
         this.state = {
             plant: { ...userPlant },
-            newWatered: null,
+            editedPlant: { ...userPlant },
             loggedIn: null,
             editMode: false,
             error: null,
@@ -78,14 +76,15 @@ export default class UserUniquePlant extends Component {
     }
 
     handleGoBack = () => {
-        this.props.history.goBack()
+        const { username } = this.props.match.params
+        this.props.history.push(`/user/${username}`)
     }
 
 
     handleChangeName = (e) => {
         this.setState({
-            plant: {
-                ...this.state.plant,
+            editedPlant: {
+                ...this.state.editedPlant,
                 name: e.target.value
             }
         })
@@ -93,8 +92,8 @@ export default class UserUniquePlant extends Component {
 
     handleChangeFamily = (e) => {
         this.setState({
-            plant: {
-                ...this.state.plant,
+            editedPlant: {
+                ...this.state.editedPlant,
                 family: e.target.value
             }
         })
@@ -102,17 +101,17 @@ export default class UserUniquePlant extends Component {
 
     handleChangeWatered = (date) => {
         this.setState({
-            plant: {
-                ...this.state.plant,
-                watered: new Date(date)
+            editedPlant: {
+                ...this.state.editedPlant,
+                watered: date
             }
         })
     }
 
     handleChangeNotes = (e) => {
         this.setState({
-            plant: {
-                ...this.state.plant,
+            editedPlant: {
+                ...this.state.editedPlant,
                 notes: e.target.value
             }
         })
@@ -120,8 +119,8 @@ export default class UserUniquePlant extends Component {
 
     handleChangeImage = (e) => {
         this.setState({
-            plant: {
-                ...this.state.plant,
+            editedPlant: {
+                ...this.state.editedPlant,
                 image: e.target.value
             }
         })
@@ -130,12 +129,16 @@ export default class UserUniquePlant extends Component {
     handleEditSubmit = (e) => {
         e.preventDefault()
         const { username, plant } = this.props.match.params
-        const { name, family, watered, notes, image } = this.state.plant
+        const { name, family, watered, notes, image } = this.state.editedPlant
         const editedPlant = { name, family, watered, notes, image }
         EditPlantApiService.patchPlant(username, plant, editedPlant)
             .then(() => {
                 this.context.updatePlant(editedPlant)
                 this.setState({
+                    plant: {
+                        ...this.state.plant,
+                        ...editedPlant
+                    },
                     editMode: false
                 })
                 this.props.history.push(`/user/${username}/${plant}`)
@@ -146,25 +149,11 @@ export default class UserUniquePlant extends Component {
             })
     }
 
-    cancelEdit = () => {
-        console.log(this.props.location.state)
-        // e.target.reset();
-        const userPlant = this.props.location.state
-        console.log(userPlant)
-        console.log({ ...userPlant })
-        // const { username, plant } = this.props.match.params
-        // this.setState({
-        //     plant: { ...userPlant },
-        //     editMode: false})
 
+    cancelEdit = () => {
         this.setState({
-            plant: { ...userPlant }
-        }, () => {
-            this.setState({
-                editMode: false
-            })
+            editMode: false
         })
-        // this.props.history.push(`/user/${username}/${plant}`)
     }
 
 
@@ -185,7 +174,7 @@ export default class UserUniquePlant extends Component {
                     <p>Notes: {this.state.plant.notes}</p>
                 </section>
                 <section className='normal-buttons'>
-                    <button className='edit' onClick={this.handleClickEdit}>Edit</button>
+                    <button type='button' className='edit' onClick={this.handleClickEdit}>Edit</button>
                     <button
                         className='delete'
                         onClick={e =>
@@ -195,6 +184,7 @@ export default class UserUniquePlant extends Component {
                         Delete
                     </button>
                     <button
+                        type='button'
                         className='back'
                         onClick={this.handleGoBack}
                     >
@@ -211,25 +201,25 @@ export default class UserUniquePlant extends Component {
                 <form className='edit-plant-form' onSubmit={this.handleEditSubmit}>
                     <input
                         type='text'
-                        name='name'
-                        id='name'
+                        name='plant-name'
+                        id='plant-name'
                         aria-label=''
                         aria-required='false'
                         defaultValue={this.state.plant.name}
                         onChange={this.handleChangeName}
                     />
-                    <img src={this.state.plant.image} alt='' />
+                    <img src={this.state.plant.image} alt={this.state.plant.name} />
                     <input
                         type='text'
-                        name='family'
-                        id='family'
+                        name='plant-family'
+                        id='plant-family'
                         aria-label=''
                         aria-required='false'
                         defaultValue={this.state.plant.family}
                         onChange={this.handleChangeFamily}
                     />
                     <DatePicker
-                        selected={new Date(this.state.plant.watered)}
+                        selected={new Date(this.state.editedPlant.watered)}
                         // selected={this.state.plant.watered}
                         onChange={this.handleChangeWatered}
                         popperPlacement='bottom'
@@ -247,8 +237,8 @@ export default class UserUniquePlant extends Component {
                     />
                     <textarea
                         type='text'
-                        name='notes'
-                        id='notes'
+                        name='plant-notes'
+                        id='plant-notes'
                         aria-label=''
                         aria-required='false'
                         defaultValue={this.state.plant.notes}
@@ -257,8 +247,8 @@ export default class UserUniquePlant extends Component {
                     />
                     <input
                         type='text'
-                        name='image'
-                        id='image'
+                        name='plant-image'
+                        id='plant-image'
                         aria-label=''
                         aria-required='false'
                         defaultValue={this.state.plant.image}
