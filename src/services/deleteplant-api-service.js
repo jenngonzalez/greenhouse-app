@@ -10,6 +10,11 @@ const DeletePlantApiService = {
                 'Authorization': `Bearer ${TokenService.getAuthToken()}`
             }
         })
+            .then(res =>
+                (!res.ok)
+                    ? res.then(e => Promise.reject(e))
+                    : res
+            )
     }
 }
 

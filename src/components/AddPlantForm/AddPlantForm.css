@@ -43,3 +43,13 @@
     flex-direction: row;
     justify-content: center;
 }
+
+input[name='plant-image'] {
+    margin-bottom: 0;
+}
+
+.hosted {
+    font-size: 10px;
+    padding: 0;
+    margin-top: -5 px;
+}

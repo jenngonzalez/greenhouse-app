@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+// import EditPlantForm from '../../components/EditPlantForm/EditPlantForm';
+import EditPlantApiService from '../../services/editplant-api-service';
 import Moment from 'react-moment';
 import 'moment-timezone';
 import GreenhouseContext from '../../contexts/GreenhouseContext';
@@ -25,11 +27,13 @@ export default class UserUniquePlant extends Component {
     constructor(props) {
         super(props)
         const userPlant = this.props.location.state
+        // can we get userPlant from context instead?
         this.state = {
             plant: { ...userPlant },
-            updatedPlant: {},
+            newWatered: null,
             loggedIn: null,
             editMode: false,
+            error: null,
         }
     }
 
@@ -60,8 +64,10 @@ export default class UserUniquePlant extends Component {
             return alert ('Permission denied')
         } else {
             DeletePlantApiService.deletePlant(loggedInUser, deletedPlant)
-            .then(this.context.deletePlant)
-            .then(this.handleDeleteSuccess())
+            .then(() => {
+                this.context.deletePlant(deletedPlant)
+                this.handleDeleteSuccess()
+            })
         }
     }
 
@@ -74,6 +80,95 @@ export default class UserUniquePlant extends Component {
     handleGoBack = () => {
         this.props.history.goBack()
     }
+
+
+    handleChangeName = (e) => {
+        this.setState({
+            plant: {
+                ...this.state.plant,
+                name: e.target.value
+            }
+        })
+    }
+
+    handleChangeFamily = (e) => {
+        this.setState({
+            plant: {
+                ...this.state.plant,
+                family: e.target.value
+            }
+        })
+    }
+
+    handleChangeWatered = (date) => {
+        this.setState({
+            plant: {
+                ...this.state.plant,
+                watered: new Date(date)
+            }
+        })
+    }
+
+    handleChangeNotes = (e) => {
+        this.setState({
+            plant: {
+                ...this.state.plant,
+                notes: e.target.value
+            }
+        })
+    }
+
+    handleChangeImage = (e) => {
+        this.setState({
+            plant: {
+                ...this.state.plant,
+                image: e.target.value
+            }
+        })
+    }
+
+    handleEditSubmit = (e) => {
+        e.preventDefault()
+        const { username, plant } = this.props.match.params
+        const { name, family, watered, notes, image } = this.state.plant
+        const editedPlant = { name, family, watered, notes, image }
+        EditPlantApiService.patchPlant(username, plant, editedPlant)
+            .then(() => {
+                this.context.updatePlant(editedPlant)
+                this.setState({
+                    editMode: false
+                })
+                this.props.history.push(`/user/${username}/${plant}`)
+            })
+            .catch(error => {
+                console.error(error)
+                this.setState({error: error})
+            })
+    }
+
+    cancelEdit = () => {
+        console.log(this.props.location.state)
+        // e.target.reset();
+        const userPlant = this.props.location.state
+        console.log(userPlant)
+        console.log({ ...userPlant })
+        // const { username, plant } = this.props.match.params
+        // this.setState({
+        //     plant: { ...userPlant },
+        //     editMode: false})
+
+        this.setState({
+            plant: { ...userPlant }
+        }, () => {
+            this.setState({
+                editMode: false
+            })
+        })
+        // this.props.history.push(`/user/${username}/${plant}`)
+    }
+
+
+
 
     renderNormalPage = () => {
         return (
@@ -110,76 +205,32 @@ export default class UserUniquePlant extends Component {
         )
     }
 
-    handleChangeName = (e) => {
-        this.setState({
-            updatedPlant: {
-                ...this.state.updatedPlant,
-                name: e.target.value
-            }
-        })
-    }
-
-    handleChangeFamily = (e) => {
-        this.setState({
-            updatedPlant: {
-                ...this.state.updatedPlant,
-                family: e.target.value
-            }
-        })
-    }
-
-    handleChangeWatered = (date) => {
-        this.setState({
-            updatedPlant: {
-                ...this.state.updatedPlant,
-                watered: date
-            }
-        });
-    }
-
-    handleChangeNotes = (e) => {
-        this.setState({
-            updatedPlant: {
-                ...this.state.updatedPlant,
-                notes: e.target.value
-            }
-        })
-    }
-
-    handleChangeImage = (e) => {
-        this.setState({
-            updatedPlant: {
-                ...this.state.updatedPlant,
-                image: e.target.value
-            }
-        })
-    }
-
     renderEditMode = () => {
         return (
             <div className='edit-mode'>
-                <form className='edit-plant-form'>
+                <form className='edit-plant-form' onSubmit={this.handleEditSubmit}>
                     <input
                         type='text'
-                        name='plant-name'
-                        id='plant-name'
+                        name='name'
+                        id='name'
                         aria-label=''
                         aria-required='false'
-                        value={this.state.plant.name}
+                        defaultValue={this.state.plant.name}
                         onChange={this.handleChangeName}
                     />
                     <img src={this.state.plant.image} alt='' />
                     <input
                         type='text'
-                        name='plant-family'
-                        id='plant-family'
+                        name='family'
+                        id='family'
                         aria-label=''
                         aria-required='false'
-                        value={this.state.plant.family}
+                        defaultValue={this.state.plant.family}
                         onChange={this.handleChangeFamily}
                     />
                     <DatePicker
                         selected={new Date(this.state.plant.watered)}
+                        // selected={this.state.plant.watered}
                         onChange={this.handleChangeWatered}
                         popperPlacement='bottom'
                         popperModifiers={{
@@ -196,44 +247,32 @@ export default class UserUniquePlant extends Component {
                     />
                     <textarea
                         type='text'
-                        name='plant-notes'
-                        id='plant-notes'
+                        name='notes'
+                        id='notes'
                         aria-label=''
                         aria-required='false'
-                        value={this.state.plant.notes}
+                        defaultValue={this.state.plant.notes}
                         onChange={this.handleChangeNotes}
                         rows={10}
                     />
                     <input
-                        type='url'
-                        name='plant-image'
-                        id='plant-image'
+                        type='text'
+                        name='image'
+                        id='image'
                         aria-label=''
                         aria-required='false'
-                        value={this.state.plant.image}
+                        defaultValue={this.state.plant.image}
                         onChange={this.handleChangeImage}
                     />
                     <section className='edit-form-buttons'>
-                        <button type='submit' onClick={this.handleEditPlant}>Save</button>
-                        <button onClick={this.cancelEdit}>Cancel</button>
+                        <button type='submit'>Save</button>
+                        <button type='button' onClick={this.cancelEdit}>Cancel</button>
                     </section>
                 </form>
             </div>
         )
     }
 
-    handleEditPlant = () => {
-        // prevent default
-        // PATCH request here
-    }
-
-    handleEditSuccess = () => {
-        // 
-    }
-
-    cancelEdit = () => {
-        this.setState({editMode: false})
-    }
 
     render() {
         return (

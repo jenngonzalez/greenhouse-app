@@ -86,11 +86,11 @@ export default class AddPlantForm extends Component {
         return (
             <div className='add-plant-form'>
                 <h2>Add a Plant</h2>
-                <form className='plant-form'>
+                <form className='plant-form' onSubmit={this.handleSubmit}>
                     <label htmlFor='plant-name'>Plant Name:</label>
                     <input
                         required
-                        pattern='\S'
+                        // pattern='\S'
                         title='This field is required'
                         type='text'
                         name='plant-name'
@@ -139,17 +139,18 @@ export default class AddPlantForm extends Component {
                     />
                     <label htmlFor='plant-image'>Image:</label>
                     <input
-                        type='url'
+                        type='text'
                         name='plant-image'
                         id='plant-image'
-                        aria-label=''
+                        aria-label='A URL to a hosted image is required'
                         aria-required='false'
                         value={this.state.image}
                         onChange={this.handleChangeImage}
                     />
+                    <span className='hosted'><p>*requires a hosted image</p></span>
                     <section className='add-form-buttons'>
-                        <button type='submit' onClick={this.handleSubmit}>Submit</button>
-                        <button onClick={this.props.onCancel}>Go Back</button>
+                        <button type='submit'>Submit</button>
+                        <button type='button' onClick={this.props.onCancel}>Go Back</button>
                     </section>
                 </form>
             </div>
