@@ -51,6 +51,8 @@ export default class SignUpForm extends Component {
                     type='email'
                     name='email'
                     id='email'
+                    aria-label='your email address'
+                    aria-required='true'
                     autoComplete='email'
                     required
                 />
@@ -59,6 +61,8 @@ export default class SignUpForm extends Component {
                     type='text'
                     name='username'
                     id='username'
+                    aria-label='create a username'
+                    aria-required='true'
                     autoComplete='username'
                     required
                 />
@@ -67,6 +71,8 @@ export default class SignUpForm extends Component {
                     type='password'
                     name='password'
                     id='password'
+                    aria-label='create a password'
+                    aria-required='true'
                     autoComplete='password'
                     required
                 />

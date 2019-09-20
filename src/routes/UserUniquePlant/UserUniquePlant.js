@@ -203,7 +203,7 @@ export default class UserUniquePlant extends Component {
                         type='text'
                         name='plant-name'
                         id='plant-name'
-                        aria-label=''
+                        aria-label='edit the name for your plant'
                         aria-required='false'
                         defaultValue={this.state.plant.name}
                         onChange={this.handleChangeName}
@@ -213,7 +213,7 @@ export default class UserUniquePlant extends Component {
                         type='text'
                         name='plant-family'
                         id='plant-family'
-                        aria-label=''
+                        aria-label='edit the family for your plant'
                         aria-required='false'
                         defaultValue={this.state.plant.family}
                         onChange={this.handleChangeFamily}
@@ -222,6 +222,8 @@ export default class UserUniquePlant extends Component {
                         selected={new Date(this.state.editedPlant.watered)}
                         // selected={this.state.plant.watered}
                         onChange={this.handleChangeWatered}
+                        aria-label='update last watered date'
+                        aria-required='false'
                         popperPlacement='bottom'
                         popperModifiers={{
                             flip: {
@@ -239,9 +241,10 @@ export default class UserUniquePlant extends Component {
                         type='text'
                         name='plant-notes'
                         id='plant-notes'
-                        aria-label=''
+                        aria-label='edit the notes for your plant'
                         aria-required='false'
                         defaultValue={this.state.plant.notes}
+                        placeholder='notes'
                         onChange={this.handleChangeNotes}
                         rows={10}
                     />
@@ -249,7 +252,7 @@ export default class UserUniquePlant extends Component {
                         type='text'
                         name='plant-image'
                         id='plant-image'
-                        aria-label=''
+                        aria-label='edit the image for your plant, requires an image that is hosted online'
                         aria-required='false'
                         defaultValue={this.state.plant.image}
                         onChange={this.handleChangeImage}

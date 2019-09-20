@@ -46,7 +46,7 @@ export default class LandingPage extends Component {
                     </div>
                     <hr />
                     <div className="app-description app-description-three">
-                        <h2>Never Kill Another Plant</h2>
+                        <h2><span className='italic'>Coming Soon: </span>Never Kill Another Plant</h2>
                         <h3>Receive push notifications with reminders to water or feed your plants.</h3>
                     </div>
                     <hr />

@@ -90,3 +90,8 @@ hr {
     font-size: 16px;
     margin: 0;
 }
+
+.landing-page-container .italic {
+    font-weight: normal;
+    font-style: italic;
+}

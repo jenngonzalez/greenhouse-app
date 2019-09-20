@@ -99,7 +99,7 @@ export default class AddPlantForm extends Component {
                         type='text'
                         name='plant-name'
                         id='plant-name'
-                        aria-label=''
+                        aria-label='name of your plant'
                         aria-required='true'
                         value={this.state.name}
                         onChange={this.handleChangeName}
@@ -109,7 +109,7 @@ export default class AddPlantForm extends Component {
                         type='text'
                         name='plant-family'
                         id='plant-family'
-                        aria-label=''
+                        aria-label='family of your plant'
                         aria-required='false'
                         value={this.state.family}
                         onChange={this.handleChangeFamily}
@@ -118,6 +118,8 @@ export default class AddPlantForm extends Component {
                     <DatePicker
                         selected={this.state.watered}
                         onChange={this.handleChangeWatered}
+                        aria-label='date your plant was last watered'
+                        aria-required='false'
                         popperPlacement='bottom'
                         popperModifiers={{
                             flip: {
@@ -136,7 +138,7 @@ export default class AddPlantForm extends Component {
                         type='text'
                         name='plant-notes'
                         id='plant-notes'
-                        aria-label=''
+                        aria-label='personal notes for your plant'
                         aria-required='false'
                         onChange={this.handleChangeNotes}
                         rows={10}

@@ -57,6 +57,8 @@ export default class LoginForm extends Component {
                     type='email'
                     name='email'
                     id='email'
+                    aria-label='your email address'
+                    aria-required='true'
                     autoComplete='your email'
                     required
                 />
@@ -65,6 +67,8 @@ export default class LoginForm extends Component {
                     type='password'
                     name='password'
                     id='password'
+                    aria-label='your password'
+                    aria-required='true'
                     autoComplete='your password'
                     required
                 />
