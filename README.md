@@ -11,10 +11,10 @@ password: Password1
 
 ## Screenshots
 User Page:
-![user page] (screenshots/GreenhouseScreenshot1.png)
+![user page](screenshots/GreenhouseScreenshot1.png)
 
 Plant Page:
-![plant page] (screenshots/GreenhouseScreenshot2.png)
+![plant page](screenshots/GreenhouseScreenshot2.png)
 
 ## Summary
 Digital Greenhouse provides an online space for you to manage your personal collection of plants. Create an account, search for your plants, and add them to your personal list. Save details such as plant family, last watered, images, and personal notes. You can also edit/remove plants from your list. Coming soon -- receive push notifications with reminders to water/feed your plants based on the schedule you define for each plant.
