@@ -72,7 +72,7 @@ export default class SignUpForm extends Component {
                 />
                 <div className='signup-buttons'>
                     <button type='submit'>Sign Up</button>
-                    <button onClick={this.props.onCancel}>Cancel</button>
+                    <button type='button' onClick={this.props.onCancel}>Cancel</button>
                 </div>
             </form>
         )

@@ -5,6 +5,7 @@ import './AddPlantForm.css';
 import AddPlantApiService from '../../services/addplant-api-service';
 import GreenhouseContext from '../../contexts/GreenhouseContext';
 import placeholder from './placeholder.png';
+import TokenService from '../../services/token-service';
 
 
 export default class AddPlantForm extends Component {
@@ -64,22 +65,26 @@ export default class AddPlantForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        if(this.state.name === '') {
-            alert('Plant name is required')
-            return false
-        }
-
-        const newPlant = {
+        const hasToken = TokenService.hasAuthToken()
+        if(!hasToken) {
+            alert('You must be logged in to add a plant')
+        } else {
+            if(this.state.name === '') {
+                alert('Plant name is required')
+                return false
+            }
+            const newPlant = {
             name: this.state.name,
             family: this.state.family,
             watered: this.state.watered,
             notes: this.state.notes,
             image: this.state.image === '' ? placeholder : this.state.image
+            }
+            AddPlantApiService.postPlant(newPlant)
+                .then(this.context.addPlant)
+                .then(this.props.onAddSuccess)
+                .catch(this.context.setError)
         }
-        AddPlantApiService.postPlant(newPlant)
-            .then(this.context.addPlant)
-            .then(this.props.onAddSuccess)
-            .catch(this.context.setError)
     }
 
     render() {
@@ -90,7 +95,6 @@ export default class AddPlantForm extends Component {
                     <label htmlFor='plant-name'>Plant Name:</label>
                     <input
                         required
-                        // pattern='\S'
                         title='This field is required'
                         type='text'
                         name='plant-name'
