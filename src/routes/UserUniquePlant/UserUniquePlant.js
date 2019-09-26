@@ -129,8 +129,8 @@ export default class UserUniquePlant extends Component {
     handleEditSubmit = (e) => {
         e.preventDefault()
         const { username, plant } = this.props.match.params
-        const { name, family, watered, notes, image } = this.state.editedPlant
-        const editedPlant = { name, family, watered, notes, image }
+        const { id, name, family, watered, notes, image } = this.state.editedPlant
+        const editedPlant = { id, name, family, watered, notes, image }
         EditPlantApiService.patchPlant(username, plant, editedPlant)
             .then(() => {
                 this.context.updatePlant(editedPlant)

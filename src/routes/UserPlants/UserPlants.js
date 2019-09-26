@@ -11,7 +11,7 @@ export default class UserPlants extends Component {
     static contextType = GreenhouseContext
 
     componentDidMount() {
-        if(!this.context.plants.length) {        
+        if(!this.context.plants.length) {
             const { username } = this.props.match.params
             GetPlantsApiService.getPlants(username)
                 .then(plantData => {
