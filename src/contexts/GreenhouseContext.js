@@ -33,7 +33,7 @@ export class GreenhouseProvider extends React.Component {
 
     updatePlant = plant => {
         this.setState({plants: [...this.state.plants.map(p => {
-            return p.id === plant.id ? {...p, ...plant} : plant
+            return p.id === parseInt(plant.id) ? {...p, ...plant} : p
         })]})
     }
 

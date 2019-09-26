@@ -10,33 +10,27 @@ export default class UserPlants extends Component {
 
     static contextType = GreenhouseContext
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            plants: []
-        }
-    }
-
     componentDidMount() {
-        const { username } = this.props.match.params
-        GetPlantsApiService.getPlants(username)
-            .then(plantData => {
-                const userPlants = plantData.map(plant => {
-                    return {
-                        id: plant.id,
-                        name: plant.name,
-                        family: plant.family,
-                        watered: plant.watered,
-                        notes: plant.notes,
-                        image: plant.image || placeholder
-                    }
+        if(!this.context.plants.length) {        
+            const { username } = this.props.match.params
+            GetPlantsApiService.getPlants(username)
+                .then(plantData => {
+                    const userPlants = plantData.map(plant => {
+                        return {
+                            id: plant.id,
+                            name: plant.name,
+                            family: plant.family,
+                            watered: plant.watered,
+                            notes: plant.notes,
+                            image: plant.image || placeholder
+                        }
+                    })
+                    this.context.addPlants(userPlants)
+                }).catch(err => {
+                    console.log(err)
+                    throw err
                 })
-                this.context.addPlants(userPlants)
-                this.setState({plants: userPlants})
-            }).catch(err => {
-                console.log(err)
-                throw err
-            })
+        }
     }
 
     renderPlants = () => {
