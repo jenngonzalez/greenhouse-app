@@ -11,12 +11,16 @@ export default class SignUpForm extends Component {
 
     constructor(props) {
         super(props)
-        this.state = { error: '' }
+        this.state = {
+            loading: false,
+            error: null
+        }
     }
 
 
     handleSubmit = e => {
         e.preventDefault()
+        this.setState({ loading: true })
         const { email, username, password } = e.target
 
         AuthApiService.postUser({
@@ -28,10 +32,14 @@ export default class SignUpForm extends Component {
                 email.value = ''
                 username.value = ''
                 password.value = ''
+                this.setState({ loading: false })
                 this.props.onSignUpSuccess()
             })
             .catch(error => {
-                this.setState({ error: error.message })
+                this.setState({
+                    loading: false,
+                    error: error.message
+                })
             })
     }
 
@@ -43,8 +51,9 @@ export default class SignUpForm extends Component {
                 autoComplete='off'
                 onSubmit={this.handleSubmit}
             >
+                {this.state.loading && <p className='loading'>Submitting Your Info ...</p>}
                 <div role='alert'>
-                    {!!error.length && <p className='red'>{error}</p>}
+                    {error && <p className='error'>{error}</p>}
                 </div>
                 <label htmlFor='email'>Email Address:</label>
                 <input
